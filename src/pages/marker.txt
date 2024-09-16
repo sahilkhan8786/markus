@@ -1,0 +1,97 @@
+ {
+            id: 'video-greenscreen',
+            videoLayer: 'Tom Waving.mp4',
+            position: { yaw: -0.6, pitch: 0 },
+            chromaKey: {
+                enabled: true,
+                color: '#01b140',
+                similarity: 0.11,
+                smoothness: 0.1
+            },
+            size: { width: 400, height: 440 },
+        },
+        {
+            id: 'html-marker-galaxy',
+            imageLayer: '/magnifier.png',
+            position: { yaw: 0.4, pitch: 0.5 },
+            size: { width: 150, height: 150 },
+            anchor: 'bottom center',
+            tooltip: 'Custom HTML Marker',
+            content: '<h1>THESE ARE H1s</h1>',
+        },
+        {
+            id: 'html-marker-sky',
+            imageLayer: '/magnifier.png',
+            position: { yaw: -2.4, pitch: 0.3 },
+            size: { width: 150, height: 150 },
+            anchor: 'bottom center',
+            tooltip: 'Custom HTML Marker',
+            content: '<h1>THESE ARE H1s</h1>',
+        },
+        {
+            id: 'html-marker-tree',
+            imageLayer: '/magnifier.png',
+            position: { yaw: -1.5, pitch: 0.3 },
+            size: { width: 150, height: 150 },
+            anchor: 'bottom center',
+            tooltip: 'Custom HTML Marker',
+            content: '<h1>THESE ARE H1s</h1>',
+        },
+        {
+            id: 'html-marker-car',
+            imageLayer: '/magnifier.png',
+            position: { yaw: -3.12, pitch: -0.08 },
+            size: { width: 100, height: 100 },
+            anchor: 'bottom center',
+            tooltip: 'Custom HTML Marker',
+            content: '<h1>THESE ARE H1s</h1>',
+        },
+        {
+            id: 'marker-text-tom-intro',
+            html: `
+                <h1 class='character-intro scene-text'>
+                    Hallo Kinder! Ich bin Tom von den RAKUNS und hier erfahrt ihr etwas über Luft und warum diese für alle Lebewesen wichtig ist
+                </h1>
+            `,
+            position: { yaw: -0.3, pitch: 0.25 },
+            size: { width: 500, height: 100 },
+            anchor: 'bottom left',
+            trigger: 'click',
+        },
+        // Conditional rendering for text markers
+        showTomMarkers && {
+            id: 'marker-text-tom-1',
+            html: `
+                <p class='scene-text'>
+                   Warum benötigen Lebewesen Luft?
+                </p>
+            `,
+            position: { yaw: -0.3, pitch: 0 },
+            size: { width: 500, height: 100 },
+            anchor: 'bottom left',
+            zoom: [0.5, 1],
+        },
+        showTomMarkers && {
+            id: 'marker-text-tom-2',
+            html: `
+                <p class='scene-text'>
+                  Wo sind wir hier?
+                </p>
+            `,
+            position: { yaw: -0.3, pitch: -0.12 },
+            size: { width: 500, height: 100 },
+            anchor: 'bottom left',
+            zoom: [0.5, 1],
+        },
+        showTomMarkers && {
+            id: 'marker-text-tom-3',
+            html: `
+                <p class='scene-text'>
+                  Was kann ich hier erkunden?
+                </p>
+            `,
+            position: { yaw: -0.3, pitch: -0.24 },
+            size: { width: 500, height: 100 },
+            anchor: 'bottom left',
+            zoom: [0.5, 1],
+        },

@@ -11,8 +11,8 @@ import DetailsOverlay from '../components/DetailsOverlay';
 import { motion } from 'framer-motion';
 import { childVariants, containerVariants } from '../lib/animation';
 import LogoModal from '../components/LogoModal';
-import audio from '../assets/audios/park.mp3';
-import GreenScreenRemoval from '../components/SecondPage/GreenScreenRemoval';
+
+
 
 function FirstPage() {
     const [showOverlay, setShowOverlay] = useState(null);
@@ -59,14 +59,15 @@ function FirstPage() {
                     /> */}
 
                 </Canvas>
-                <div className='absolute top-0 left-0 z-50'>
-                    <video src={'06.webm'} width="640" height="360" loop autoPlay />
 
-                </div>
-
+                {/* <div style={{ position: 'relative', width: '100%', height: '100%', background: 'red', padding: '4rem' }}>
+                
+                    <ReactPlayer url='/06-1.mov' />
+                </div> */}
+                {/* <img src="06_1.mov" alt="" className='absolute top-0 left-0 z-50' /> */}
                 {showOverlay !== null && (
-                    <section className="w-full h-screen absolute inset-0 z-50 overflow-y-scroll flex items-start justify-end" onClick={() => setShowOverlay(null)}>
-                        <div className='xl:w-1/2 w-full bg-black xl:bg-black/70 py-6 h-screen'>
+                    <section className="w-full  absolute inset-0 z-50 overflow-y-scroll flex items-start justify-end" onClick={() => setShowOverlay(null)}>
+                        <div className=' w-full bg-black/70 py-6 '>
                             <DetailsOverlay setShowOverlay={setShowOverlay}>
                                 {FirstPageDetais.filter(el => el.id === showOverlay).map(el => (
                                     <motion.div
@@ -102,7 +103,7 @@ function FirstPage() {
                     </section>
                 )}
             </div>
-            <LogoModal audio={audio} handleFullScreen={handleFullScreen} />
+            {/* <LogoModal audio={audio} handleFullScreen={handleFullScreen} /> */}
         </Suspense>
     );
 }

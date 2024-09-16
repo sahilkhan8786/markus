@@ -21,13 +21,13 @@ export const DataTom = [
 
 export const FirstPageDetais = [
     {
-        id: "TREE",
+        id: "html-marker-tree",
         heading: 'Pflanzen sind  kleine Luftreiniger',
         videoURL: 'dQw4w9WgXcQ',
         detailsAfterVideo: "Sie nehmen schmutzige Luft mit Kohlendioxid auf und geben saubere Luft mit Sauerstoff ab. Das machen sie mit Hilfe von ihren Blättern, Sonnenlicht und Wasser. So zaubern sie saubere und frische Luft zum Atmen für uns und alle Tiere!, Stelle dir vor, die Blätter der Pflanzen sind kleine Schwämme, die die schmutzige Luft aufsaugen und saubere Luft abgeben."
     },
     {
-        id: "CAR",
+        id: "html-marker-car",
         heading: 'Autoabgase',
         videoURL: 'dQw4w9WgXcQ',
         detailBeforeVideo: "Stell dir vor, du atmest tief ein, aber anstatt frischer Luft bekommst du etwas Schlechtes in deine Lunge. So ähnlich ist es für die Umwelt, wenn Autos schmutzige Abgase ausstoßen., Diese Abgase sind wie Rauch, der die Luft schmutzig macht.Darin sind giftige Stoffe, die unserer Umwelt und unserer Gesundheit schaden können.",
@@ -35,14 +35,14 @@ export const FirstPageDetais = [
 
     },
     {
-        id: "SKY",
+        id: "html-marker-sky",
         heading: 'Luft zum Atmen',
         videoURL: 'dQw4w9WgXcQ',
         detailsAfterVideo: "Hast du schon mal versucht, die Luft zu fangen?,Puh, gar nicht so einfach, oder ?,                Luft ist unsichtbar, man kann sie nicht sehen, nicht anfassen und nicht schmecken.Aber sie ist überall um uns herum! So wie Wasser unsichtbar in einem Glas schwimmt, so schwimmt auch die Luft um uns herum.Wir können die Luft zwar nicht sehen, aber wir können sie spüren, wenn wir den Wind auf unserer Haut fühlen oder wenn wir tief einatmen.Die Luft ist wie ein unsichtbares Meer, das die ganze Erde umgibt.In diesem Meer gibt es verschiedene Gase, die wir zum Leben brauchen.Eines dieser Gase ist Sauerstoff.Sauerstoff ist wie die Nahrung für unsere Lunge.Wenn wir einatmen, nehmen wir Sauerstoff aus der Luft auf.Ein anderes Gas in der Luft ist Kohlendioxid.Kohlendioxid entsteht, wenn wir ausatmen, aber auch wenn Autos fahren oder Fabriken rauchen.Zu viel Kohlendioxid in der Luft kann unserer Umwelt schaden.Es kann die Erde erwärmen und das Klima verändern.,Deshalb ist es wichtig, dass wir die Luft sauber halten.,Was können wir dafür tun ?,                Weniger Auto fahren: Autos stoßen Kohlendioxid aus.,Mit dem Fahrrad oder zu Fuß gehen: Das ist gut für die Umwelt und für unsere Gesundheit./Öffentliche Verkehrsmittel nutzen: Busse und Bahnen sind umweltfreundlicher als Autos.,Pflanzen einpflanzen: Pflanzen nehmen Kohlendioxid aus der Luft auf. ,So können wir alle dazu beitragen, dass die Luft sauber bleibt und unsere Umwelt gesund bleibt."
 
     },
     {
-        id: "GALAXY",
+        id: "html-marker-galaxy",
         heading: 'Warum können wir die Luft nicht sehen?',
         videoURL: 'dQw4w9WgXcQ',
         detailBeforeVideo: "Das ist eine spannende Frage! Luft ist tatsächlich unsichtbar, obwohl sie überall um uns herum ist. Kannst du dir vorstellen, du hast ein Glas Wasser?,Das Wasser im Glas kannst du sehen, oder ? Aber wenn du Salz in das Wasser gibst und es umrührst, verschwindet das Salz nicht einfach.Es ist immer noch da, aber du kannst es nicht mehr sehen, weil es sich im Wasser aufgelöst hat.,Genauso ist es auch mit der Luft.,Die Luft besteht aus ganz vielen kleinen Teilchen.Diese Teilchen sind so klein, dass wir sie mit unseren Augen nicht sehen können.Sie sind viel kleiner als die winzigen Salzkristalle im Wasserglas.",

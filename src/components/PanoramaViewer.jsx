@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import * as THREE from 'three';
 import { useTexture } from '@react-three/drei';
 import Marker from './Marker';
-import magnifierImage from '../assets/magnifier.png'
+import magnifierImage from '/magnifier.png'
 import CycleCard from './CycleCard';
 
 export const PanoramaViewer = ({ src, position, setShowOverlay }) => {

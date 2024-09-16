@@ -25,6 +25,8 @@ const SecondPage = () => {
     const [overlayImage, setOverlayImage] = useState(null);
     const [interactionTimeout, setInteractionTimeout] = useState(null);
     const [markerId, setMarkerId] = useState(null);
+    const [isAudioPlaying, setIsAudioPlaying] = useState(false);
+    const [currentAudioSrc, setCurrentAudioSrc] = useState(null);
 
     const viewerRef = useRef(null);
     const markersPluginRef = useRef(null);
@@ -73,14 +75,14 @@ const SecondPage = () => {
             id: 'html-marker-galaxy',
             html: '<img  src="/plus.gif"  />',
             position: { yaw: 0.4, pitch: 0.5 },
-            size: { width: 150, height: 150 },
+            size: { width: 50, height: 50 },
             anchor: 'bottom center',
 
         }, {
             id: 'html-marker-sky',
             html: '<img  src="/plus.gif"  />',
             position: { yaw: -2.4, pitch: 0.3 },
-            size: { width: 150, height: 150 },
+            size: { width: 50, height: 50 },
             anchor: 'bottom center',
 
         },
@@ -88,7 +90,7 @@ const SecondPage = () => {
             id: 'html-marker-tree',
             html: '<img  src="/plus.gif"  />',
             position: { yaw: -1.5, pitch: 0.3 },
-            size: { width: 150, height: 150 },
+            size: { width: 50, height: 50 },
             anchor: 'bottom center',
 
         },
@@ -96,7 +98,7 @@ const SecondPage = () => {
             id: 'html-marker-car',
             html: '<img  src="/plus.gif"  />',
             position: { yaw: -3.12, pitch: -0.08 },
-            size: { width: 100, height: 100 },
+            size: { width: 50, height: 50 },
             anchor: 'bottom center',
 
         },
@@ -105,7 +107,7 @@ const SecondPage = () => {
             id: 'html-message-icon',
             html: '<img  src="/speech-bubble.gif"  />',
             position: { yaw: -0.3, pitch: 0 },
-            size: { width: 100, height: 100 },
+            size: { width: 50, height: 50 },
             anchor: 'bottom center',
 
 
@@ -186,7 +188,7 @@ const SecondPage = () => {
 
     const handleMarkerClick = (markerId) => {
         setMarkerId(markerId); // Set the marker ID
-        // Existing code...
+
         if (audioRef.current) {
             audioRef.current.pause();
             audioRef.current.currentTime = 0;
@@ -195,9 +197,14 @@ const SecondPage = () => {
         const audioSrc = markerAudio[markerId];
         if (audioSrc) {
             const newAudio = new Audio(audioSrc);
-            newAudio.play().catch(err => console.error('Audio playback error:', err));
+            newAudio.play().then(() => {
+                setIsAudioPlaying(true); // Audio starts playing
+                setCurrentAudioSrc(audioSrc); // Track the current audio source
+            }).catch(err => console.error('Audio playback error:', err));
 
             newAudio.addEventListener('ended', () => {
+                setIsAudioPlaying(false); // Audio has ended
+                setCurrentAudioSrc(null); // Reset current audio source
                 if (markerId !== 'html-message-icon') {
                     setTomVideo(tomWaving); // Ensure the correct video path
                     if (markersPluginRef.current) {
@@ -207,10 +214,10 @@ const SecondPage = () => {
             });
 
             audioRef.current = newAudio;
-        }
-
-        if (!audioRef.current) {
-            setTomVideo(tomWaving)
+        } else {
+            setIsAudioPlaying(false); // No audio to play
+            setCurrentAudioSrc(null); // Reset current audio source
+            setTomVideo(tomWaving);
         }
 
         if (markerId === 'html-message-icon') {
@@ -249,6 +256,14 @@ const SecondPage = () => {
     }, [showTomMarkers]);
 
     useEffect(() => {
+        if (isAudioPlaying && currentAudioSrc && currentAudioSrc !== parkAudio) {
+            setTomVideo(tomTalkin); // Play Tom Talking video if any audio other than parkAudio is playing
+        } else if (!isAudioPlaying) {
+            setTomVideo(tomWaving); // Play Tom Waving video if no audio is playing
+        }
+    }, [isAudioPlaying, currentAudioSrc]);
+
+    useEffect(() => {
         const initializeViewer = () => {
             const viewer = viewerRef.current;
             if (viewer) {
@@ -271,7 +286,12 @@ const SecondPage = () => {
         };
 
         const timer = setTimeout(initializeViewer, 1000);
-        return () => clearTimeout(timer);
+        return () => {
+            clearTimeout(timer);
+            if (audioRef.current) {
+                audioRef.current.pause();
+            }
+        };
     }, []);
 
     useEffect(() => {

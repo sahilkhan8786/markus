@@ -71,12 +71,12 @@ const SecondPage = () => {
                 similarity: 0.1,
                 smoothness: 0.1
             },
-            size: { width: 500, height: 550 },
+            size: { width: 500 * 1.5, height: 550 * 1.5 },
         },
         {
             id: 'html-marker-galaxy',
             html: '<img class="gifs" src="/plus.gif"  />',
-            position: { yaw: 0.4, pitch: 0.5 },
+            position: { yaw: 0.4, pitch: 0.32 },
             size: { width: 50, height: 50 },
             anchor: 'bottom center',
 
@@ -337,7 +337,7 @@ Hallo Kinder! Ich bin Tom von den RAKUNS und hier erfahrt ihr etwas über Luft u
                 defaultZoomLvl={0.8}
                 minFov={10}
                 maxFov={90}
-                defaultYaw={-1}
+                defaultYaw={-0.5}
                 defaultPitch={0}
                 moveSpeed={0.5}
                 plugins={[

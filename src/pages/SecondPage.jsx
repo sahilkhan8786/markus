@@ -206,7 +206,7 @@ Hallo Kinder! Ich bin Tom von den RAKUNS und hier erfahrt ihr etwas über Luft u
 
     // Function to start the inactivity timer when additional markers are shown
 
-    const animateToMarker = (pitch, yaw) => {
+    const animateToMarker = (pitch, yaw, duration = 500) => {
         return new Promise((resolve) => {
             const viewer = viewerRef.current;
 
@@ -217,10 +217,9 @@ Hallo Kinder! Ich bin Tom von den RAKUNS und hier erfahrt ihr etwas über Luft u
                     speed: '40rpm',
                 });
 
-                // Assuming the animation takes 2 seconds; adjust as needed
                 setTimeout(() => {
                     resolve();
-                }, 500);
+                }, duration);
             } else {
                 resolve(); // Resolve immediately if viewer is not available
             }
@@ -228,21 +227,33 @@ Hallo Kinder! Ich bin Tom von den RAKUNS und hier erfahrt ihr etwas über Luft u
     };
 
 
+
+
     const handleMarkerClick = async (markerId) => {
         setMarkerId(markerId); // Set the marker ID
 
-        if (markerId === 'html-message-icon') {
-            // Start the animation and wait for it to complete
-            await animateToMarker(0, -0.5);
+        const overlayElement = document.getElementById('overlay');
+        if (overlayElement) {
+            // Apply fade-in class to trigger opacity animation
+            overlayElement.classList.add('fade-in');
+            // Trigger reflow to apply the class
+            overlayElement.offsetHeight; // Trigger reflow
+            overlayElement.classList.add('fade-in-active');
+        }
 
-            // Perform actions after animation is done
+        // Animate to the marker position and wait for the animation to complete
+        await animateToMarker(0, -0.5);
+
+        if (markerId === 'html-message-icon') {
+            // Start showing Tom markers and switch video
             setShowTomMarkers(true);
-            setTomVideo(tomTalkin); // Switch to talking video
+            setTomVideo(tomTalkin);
 
             if (markersPluginRef.current) {
                 markersPluginRef.current.setMarkers([...baseMarkers, ...additionalMarkers]);
             }
 
+            // Set a timeout to hide Tom markers later
             if (interactionTimeout) {
                 clearTimeout(interactionTimeout);
             }
@@ -285,6 +296,7 @@ Hallo Kinder! Ich bin Tom von den RAKUNS und hier erfahrt ihr etwas über Luft u
             }
         }
     };
+
 
     useEffect(() => {
         if (markersPluginRef.current) {
@@ -354,8 +366,6 @@ Hallo Kinder! Ich bin Tom von den RAKUNS und hier erfahrt ihr etwas über Luft u
     }, [showTomMarkers, tomVideo]);
 
     return (
-
-
         <div ref={pageRef}>
             <ReactPhotoSphereViewer
                 src={image}
@@ -367,12 +377,12 @@ Hallo Kinder! Ich bin Tom von den RAKUNS und hier erfahrt ihr etwas über Luft u
                 defaultYaw={-0.5}
                 defaultPitch={0}
                 moveSpeed={0.5}
-                plugins={[
-                    [MarkersPlugin, { markers: baseMarkers }]
-                ]}
-
+                plugins={[[MarkersPlugin, { markers: baseMarkers }]]}
                 ref={viewerRef}
             />
+            <div id="overlay" className="fade-in">
+                {/* Your overlay content */}
+            </div>
             {magnifiedImageOverlay && (
                 <MagnifiedImageOverlay
                     image={overlayImage}
@@ -382,12 +392,10 @@ Hallo Kinder! Ich bin Tom von den RAKUNS und hier erfahrt ihr etwas über Luft u
                 />
             )}
             <LogoModal handleFullScreen={handleFullScreen} audio={parkAudio} />
-
-
-
         </div>
-
     );
+
+
 };
 
 export default SecondPage;

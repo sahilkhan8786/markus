@@ -29,7 +29,7 @@ body {
     border-radius: 10px;
     cursor: pointer;
     transition: all 0.2s;
-    @apply shadow-2xl
+
 }
 
 .character-intro {

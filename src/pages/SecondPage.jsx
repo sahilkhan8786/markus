@@ -3,7 +3,7 @@ import { ReactPhotoSphereViewer } from "react-photo-sphere-viewer";
 import image from '../assets/background/Air1.png';
 import { MarkersPlugin } from "@photo-sphere-viewer/markers-plugin";
 import "@photo-sphere-viewer/markers-plugin/index.css";
-import { redirect, useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 // AUDIO FILES
 import introAudio from '/tom-intro-audio.mp3'
@@ -205,10 +205,32 @@ Hallo Kinder! Ich bin Tom von den RAKUNS und hier erfahrt ihr etwas über Luft u
 
 
     // Function to start the inactivity timer when additional markers are shown
+    const animatedValues = {
+        pitch: { start: 0, end: 0 }, // Adjust based on the marker position you want
+        yaw: { start: 0, end: -0.3 }, // Adjust yaw for 'html-message-icon' position
+        zoom: { start: 50, end: 70 },
+        fisheye: { start: 0, end: 0 },
+        maxFov: { start: 90, end: 80 },
+    };
+    const animateToMarker = (pitch, yaw) => {
+        const viewer = viewerRef.current;
 
+        if (viewer) {
+            viewer.animate({
+                pitch: pitch, // Target pitch value
+                yaw: yaw, // Target yaw value
+                // Optional zoom level
+                speed: '5.5rpm', // Animation speed (you can customize this)
+            })
+        }
+    };
 
     const handleMarkerClick = (markerId) => {
         setMarkerId(markerId); // Set the marker ID
+
+        if (markerId === 'html-message-icon') {
+            animateToMarker(0, -0.5);
+        }
 
         if (audioRef.current) {
             audioRef.current.pause();

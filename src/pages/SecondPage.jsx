@@ -242,15 +242,15 @@ Hallo Kinder! Ich bin Tom von den RAKUNS und hier erfahrt ihr etwas über Luft u
             setCurrentAudioSrc(null); // Reset current audio source
             setTomVideo(tomWaving);
         }
-        // if (markerId === 'html-bike-icon') {
-        //     navigate('/park-panorama');
-        // }
+        if (markerId === 'html-bike-icon') {
+            navigate('/park-panorama');
+        }
         if (markerId === 'html-message-icon') {
             setShowTomMarkers(true);
             setTomVideo(tomTalkin); // Switch to talking video
 
-            const updatedMarkers = baseMarkers.filter(marker => marker.id !== 'html-message-icon');
-            markersPluginRef.current.setMarkers(updatedMarkers);
+
+            markersPluginRef.current.setMarkers([...baseMarkers, ...additionalMarkers]);
 
             if (interactionTimeout) {
                 clearTimeout(interactionTimeout);
@@ -335,6 +335,8 @@ Hallo Kinder! Ich bin Tom von den RAKUNS und hier erfahrt ihr etwas über Luft u
     }, [showTomMarkers, tomVideo]);
 
     return (
+
+
         <div ref={pageRef}>
             <ReactPhotoSphereViewer
                 src={image}
@@ -365,6 +367,7 @@ Hallo Kinder! Ich bin Tom von den RAKUNS und hier erfahrt ihr etwas über Luft u
 
 
         </div>
+
     );
 };
 

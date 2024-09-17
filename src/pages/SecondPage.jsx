@@ -120,7 +120,7 @@ const SecondPage = () => {
             position: { yaw: -2, pitch: -0.1 },
             size: { width: 150, height: 150 },
             anchor: 'bottom center',
-            tooltip: ' Während wir hier so gemütlich durch den Park radeln, fällt euch bestimmt die frische Luft auf, oder? Das ist kein Zufall! Wisst ihr, Autos brauchen Benzin zum Fahren und Stoßen dabei Abgase aus, die unsere Luft verschmutzen. Das ist schlecht für uns und die Natur. Fahrräder sind da ganz anders! Wir brauchen nur unsere eigene Energie und pusten keine schädlichen Abgase in die Luft. Wenn wir also öfter Fahrrad fahren, schützen wir die Luft und halten sie sauber. Und ganz nebenbei macht Fahrradfahren auch noch richtig viel Spaß, findet ihr nicht?'
+            tooltip: ' Wir fahren mit dem Fahrrad! Kleine VR Tour mit dem Fahrrad. Umweltfreundlich, gesund und gut für die Luft!'
 
 
         },

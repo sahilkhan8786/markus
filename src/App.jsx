@@ -3,6 +3,8 @@ import Rootlayout from "./layouts/Rootlayout"
 import LandingPage from "./pages/LandingPage"
 import FirstPage from "./pages/FirstPage"
 import SecondPage from "./pages/SecondPage"
+import DetailsPage from "./pages/DetailsPage"
+import ParkPanorama from "./pages/ParkPanorama"
 
 const router = createBrowserRouter([{
   path: '/',
@@ -19,6 +21,14 @@ const router = createBrowserRouter([{
     {
       path: '/second',
       element: <SecondPage />
+    },
+    {
+      path: '/learn/:details',
+      element: <DetailsPage />
+    },
+    {
+      path: '/park-panorama',
+      element: <ParkPanorama />
     },
   ]
 }])

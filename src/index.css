@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+    font-family: "Chewy", system-ui;
+    @apply select-none
+}
+
+.gifs {
+    cursor: pointer;
+    @apply animate-pulse
+}
+
 .psv-navbar {
     display: none !important;
 }
@@ -13,12 +23,13 @@
 }
 
 .scene-text {
-    background-color: #fff;
-    color: #000;
+    background-color: #009ddb;
+    color: #fff;
     padding: 15px;
     border-radius: 10px;
     cursor: pointer;
     transition: all 0.2s;
+    @apply shadow-2xl
 }
 
 .character-intro {

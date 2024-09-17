@@ -3,6 +3,7 @@ import { ReactPhotoSphereViewer } from "react-photo-sphere-viewer";
 import image from '../assets/background/Air1.png';
 import { MarkersPlugin } from "@photo-sphere-viewer/markers-plugin";
 import "@photo-sphere-viewer/markers-plugin/index.css";
+import { redirect, useNavigate } from 'react-router-dom'; // Import useNavigate
 
 // AUDIO FILES
 import introAudio from '/tom-intro-audio.mp3'
@@ -12,8 +13,8 @@ import tom3Audio from '/tom-audio-3.mp3'
 import parkAudio from '/park.mp3'
 
 // VIDEO FILES
-import tomWaving from '/Tom Waving_2.mp4'
-import tomTalkin from '/Tom Talkin_1.mp4'
+import tomWaving from '/Tom Waving550x500.mp4'
+import tomTalkin from '/Tom Talkin550x500.mp4'
 import MagnifiedImageOverlay from '../components/SecondPage/MagnifiedImageOverlay';
 import LogoModal from '../components/LogoModal';
 
@@ -31,6 +32,7 @@ const SecondPage = () => {
     const viewerRef = useRef(null);
     const markersPluginRef = useRef(null);
     const audioRef = useRef(null);
+    const navigate = useNavigate();
 
 
     const pageRef = useRef(null);
@@ -73,14 +75,14 @@ const SecondPage = () => {
         },
         {
             id: 'html-marker-galaxy',
-            html: '<img  src="/plus.gif"  />',
+            html: '<img class="gifs" src="/plus.gif"  />',
             position: { yaw: 0.4, pitch: 0.5 },
             size: { width: 50, height: 50 },
             anchor: 'bottom center',
 
         }, {
             id: 'html-marker-sky',
-            html: '<img  src="/plus.gif"  />',
+            html: '<img class="gifs" src="/plus.gif"  />',
             position: { yaw: -2.4, pitch: 0.3 },
             size: { width: 50, height: 50 },
             anchor: 'bottom center',
@@ -88,7 +90,7 @@ const SecondPage = () => {
         },
         {
             id: 'html-marker-tree',
-            html: '<img  src="/plus.gif"  />',
+            html: '<img class="gifs"  src="/plus.gif"  />',
             position: { yaw: -1.5, pitch: 0.3 },
             size: { width: 50, height: 50 },
             anchor: 'bottom center',
@@ -96,7 +98,7 @@ const SecondPage = () => {
         },
         {
             id: 'html-marker-car',
-            html: '<img  src="/plus.gif"  />',
+            html: '<img class="gifs" src="/plus.gif"  />',
             position: { yaw: -3.12, pitch: -0.08 },
             size: { width: 50, height: 50 },
             anchor: 'bottom center',
@@ -105,10 +107,20 @@ const SecondPage = () => {
 
         {
             id: 'html-message-icon',
-            html: '<img  src="/speech-bubble.gif"  />',
+            html: '<img class="gifs"  src="/speech-bubble.gif"  />',
             position: { yaw: -0.3, pitch: 0 },
             size: { width: 50, height: 50 },
             anchor: 'bottom center',
+
+
+        },
+        {
+            id: 'html-bike-icon',
+            html: '<img class="gifs"  src="/bike.gif"  />',
+            position: { yaw: -2, pitch: -0.1 },
+            size: { width: 150, height: 150 },
+            anchor: 'bottom center',
+            tooltip: ' Während wir hier so gemütlich durch den Park radeln, fällt euch bestimmt die frische Luft auf, oder? Das ist kein Zufall! Wisst ihr, Autos brauchen Benzin zum Fahren und Stoßen dabei Abgase aus, die unsere Luft verschmutzen. Das ist schlecht für uns und die Natur. Fahrräder sind da ganz anders! Wir brauchen nur unsere eigene Energie und pusten keine schädlichen Abgase in die Luft. Wenn wir also öfter Fahrrad fahren, schützen wir die Luft und halten sie sauber. Und ganz nebenbei macht Fahrradfahren auch noch richtig viel Spaß, findet ihr nicht?'
 
 
         },
@@ -123,7 +135,9 @@ const SecondPage = () => {
             id: 'marker-text-tom-intro',
             html: `
                 <h1 class='character-intro scene-text'>
-                    Hallo Kinder! Ich bin Tom von den RAKUNS und hier erfahrt ihr etwas über Luft und warum diese für alle Lebewesen wichtig ist
+Hallo Kinder! Ich bin Tom von den RAKUNS und hier erfahrt ihr etwas über Luft und warum diese für alle Lebewesen wichtig ist
+
+                    
                 </h1>
             `,
             position: { yaw: -0.1, pitch: 0.25 },
@@ -134,9 +148,9 @@ const SecondPage = () => {
         {
             id: 'marker-text-tom-1',
             html: `
-                <p class='scene-text'>
-                   Warum benötigen Lebewesen Luft?
-                </p>
+               <p class='scene-text'>
+          Warum benötigen Lebewesen Luft?
+        </p>
             `,
             position: { yaw: -0.1, pitch: 0 },
             size: { width: 500, height: 100 },
@@ -147,7 +161,8 @@ const SecondPage = () => {
             id: 'marker-text-tom-2',
             html: `
                 <p class='scene-text'>
-                  Wo sind wir hier?
+                Wo sind wir hier?
+                 
                 </p>
             `,
             position: { yaw: -0.1, pitch: -0.12 },
@@ -159,7 +174,10 @@ const SecondPage = () => {
             id: 'marker-text-tom-3',
             html: `
                 <p class='scene-text'>
-                  Was kann ich hier erkunden?
+
+             Was kann ich hier erkunden?
+                 
+                
                 </p>
             `,
             position: { yaw: -0.1, pitch: -0.24 },
@@ -179,10 +197,7 @@ const SecondPage = () => {
         'marker-text-tom-3': tom3Audio,
     };
 
-    const handleViewerClick = () => {
-        setShowTomMarkers(false);
-        setTomVideo(tomWaving);
-    };
+
     // Function to start the inactivity timer when additional markers are shown
 
 
@@ -205,6 +220,8 @@ const SecondPage = () => {
             newAudio.addEventListener('ended', () => {
                 setIsAudioPlaying(false); // Audio has ended
                 setCurrentAudioSrc(null); // Reset current audio source
+
+
                 if (markerId !== 'html-message-icon') {
                     setTomVideo(tomWaving); // Ensure the correct video path
                     if (markersPluginRef.current) {
@@ -219,7 +236,9 @@ const SecondPage = () => {
             setCurrentAudioSrc(null); // Reset current audio source
             setTomVideo(tomWaving);
         }
-
+        if (markerId === 'html-bike-icon') {
+            navigate('/park-panorama');
+        }
         if (markerId === 'html-message-icon') {
             setShowTomMarkers(true);
             setTomVideo(tomTalkin); // Switch to talking video
@@ -257,9 +276,9 @@ const SecondPage = () => {
 
     useEffect(() => {
         if (isAudioPlaying && currentAudioSrc && currentAudioSrc !== parkAudio) {
-            setTomVideo(tomTalkin); // Play Tom Talking video if any audio other than parkAudio is playing
+            setTomVideo(tomTalkin);
         } else if (!isAudioPlaying) {
-            setTomVideo(tomWaving); // Play Tom Waving video if no audio is playing
+            setTomVideo(tomWaving);
         }
     }, [isAudioPlaying, currentAudioSrc]);
 
@@ -273,6 +292,8 @@ const SecondPage = () => {
 
                     markersPlugin.addEventListener('select-marker', (e) => {
                         const markerId = e.marker.config.id;
+
+
                         handleMarkerClick(markerId);
                     });
 
@@ -322,7 +343,7 @@ const SecondPage = () => {
                 plugins={[
                     [MarkersPlugin, { markers: baseMarkers }]
                 ]}
-                onClick={handleViewerClick}
+
                 ref={viewerRef}
             />
             {magnifiedImageOverlay && (
@@ -330,6 +351,7 @@ const SecondPage = () => {
                     image={overlayImage}
                     setMagnifiedImageOverlay={setMagnifiedImageOverlay}
                     markerId={markerId} // Pass markerId as a prop
+                    onReadMore={() => navigate(`/learn/${markerId}`)} // Redirect on "Read More" click
                 />
             )}
             <LogoModal handleFullScreen={handleFullScreen} audio={parkAudio} />

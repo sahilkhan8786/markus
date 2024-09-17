@@ -120,7 +120,12 @@ const SecondPage = () => {
             position: { yaw: -2, pitch: -0.1 },
             size: { width: 150, height: 150 },
             anchor: 'bottom center',
-            tooltip: ' Wir fahren mit dem Fahrrad! Kleine VR Tour mit dem Fahrrad. Umweltfreundlich, gesund und gut für die Luft!'
+            tooltip: `
+                <div class="custom-tooltip">
+                <img src="/cycle.jpeg" alt="Bike Tour Image" class="cycle-image" />
+                    <p>Wir fahren mit dem Fahrrad! Kleine VR Tour mit dem Fahrrad. Umweltfreundlich, gesund und gut für die Luft!</p>
+                </div>
+            `,
 
 
         },

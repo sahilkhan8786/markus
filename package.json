@@ -12,21 +12,14 @@
   "dependencies": {
     "@photo-sphere-viewer/autorotate-plugin": "^5.10.0",
     "@photo-sphere-viewer/markers-plugin": "^5.10.0",
-    "@react-three/drei": "^9.111.5",
-    "@react-three/fiber": "^8.17.6",
-    "@tensorflow-models/body-pix": "^2.2.1",
-    "@tensorflow/tfjs": "^4.21.0",
-    "animejs": "^3.2.2",
     "framer-motion": "^11.5.2",
-    "glfx": "^0.0.4",
     "photo-sphere-viewer": "^4.8.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-photo-sphere-viewer": "^6.0.0",
     "react-player": "^2.16.0",
     "react-router-dom": "^6.26.1",
-    "three": "^0.168.0",
-    "three.equirectangular-to-cubemap": "^1.1.0"
+    "three": "^0.168.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.8.0",

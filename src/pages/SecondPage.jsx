@@ -11,12 +11,16 @@ import tom1Audio from '/tom-audio-1.mp3'
 import tom2Audio from '/tom-audio-2.mp3'
 import tom3Audio from '/tom-audio-3.mp3'
 import parkAudio from '/park.mp3'
+import treeAudio from '/html-marker-tree.mp3'
+import carAudio from '/html-marker-car.mp3'
+import skyAudio from '/html-marker-sky.mp3'
+import galaxyAudio from '/html-marker-galaxy.mp3'
 
 // VIDEO FILES
 import tomWaving from '/Tom Waving550x500.mp4'
 import tomTalkin from '/Tom Talkin550x500.mp4'
-import MagnifiedImageOverlay from '../components/SecondPage/MagnifiedImageOverlay';
 import LogoModal from '../components/LogoModal';
+import MagnifiedImageOverlay from '../components/MagnifiedImageOverlay';
 
 
 const SecondPage = () => {
@@ -50,12 +54,11 @@ const SecondPage = () => {
 
 
     const markerImages = {
-        'html-marker-galaxy': '/path/to/galaxy-image.jpg',
-        'html-marker-sky': '/path/to/sky-image.jpg',
-        'html-marker-tree': '/path/to/tree-image.jpg',
-        'html-marker-car': '/path/to/car-image.jpg',
-        'html-plus-icon': '/path/to/plus-icon-image.jpg',
-        'html-message-icon': '/path/to/message-icon-image.jpg',
+        'html-marker-galaxy': '/html-marker-galaxy.jpg',
+        'html-marker-sky': '/html-marker-sky.jpg',
+        'html-marker-tree': '/html-marker-tree.png',
+        'html-marker-car': '/html-marker-car.jpg',
+
         // Add more if needed
     };
 
@@ -201,6 +204,10 @@ Hallo Kinder! Ich bin Tom von den RAKUNS und hier erfahrt ihr etwas über Luft u
         'marker-text-tom-1': tom1Audio,
         'marker-text-tom-2': tom2Audio,
         'marker-text-tom-3': tom3Audio,
+        'html-marker-tree': treeAudio,
+        'html-marker-car': carAudio,
+        'html-marker-galaxy': galaxyAudio,
+        'html-marker-sky': skyAudio,
     };
 
 
@@ -227,7 +234,17 @@ Hallo Kinder! Ich bin Tom von den RAKUNS und hier erfahrt ihr etwas über Luft u
     };
 
 
-
+    // Stop current audio if playing
+    const stopAudio = () => {
+        if (audioRef.current) {
+            audioRef.current.pause();
+            audioRef.current.currentTime = 0;
+            audioRef.current = null; // Reset the audio reference
+            setIsAudioPlaying(false); // Audio has ended
+            setCurrentAudioSrc(null); // Reset current audio source
+            setTomVideo(tomWaving); // Ensure the correct video path
+        }
+    };
 
     const handleMarkerClick = async (markerId) => {
         setMarkerId(markerId); // Set the marker ID
@@ -241,61 +258,62 @@ Hallo Kinder! Ich bin Tom von den RAKUNS und hier erfahrt ihr etwas über Luft u
             overlayElement.classList.add('fade-in-active');
         }
 
-        // Animate to the marker position and wait for the animation to complete
-        await animateToMarker(0, -0.5);
 
-        if (markerId === 'html-message-icon') {
-            // Start showing Tom markers and switch video
-            setShowTomMarkers(true);
-            setTomVideo(tomTalkin);
 
-            if (markersPluginRef.current) {
-                markersPluginRef.current.setMarkers([...baseMarkers, ...additionalMarkers]);
-            }
+        // Handle specific marker actions
+        switch (markerId) {
+            case 'html-message-icon':
+                await animateToMarker(0, -0.5);
+                setShowTomMarkers(true);
+                if (markersPluginRef.current) {
+                    markersPluginRef.current.setMarkers([...baseMarkers, ...additionalMarkers]);
+                }
 
-            // Set a timeout to hide Tom markers later
-            if (interactionTimeout) {
+                // Set a timeout to hide Tom markers later
                 clearTimeout(interactionTimeout);
-            }
+                const timeout = setTimeout(() => {
+                    setShowTomMarkers(false);
+                }, 20000);
+                setInteractionTimeout(timeout);
+                break;
 
-            const timeout = setTimeout(() => {
-                setShowTomMarkers(false);
-            }, 20000);
+            case 'html-bike-icon':
+                navigate('/park-panorama');
+                break;
 
-            setInteractionTimeout(timeout);
-        } else if (markerId === 'html-bike-icon') {
-            navigate('/park-panorama');
-        } else if (markerImages[markerId]) {
-            setOverlayImage(markerImages[markerId]);
-            setMagnifiedImageOverlay(true);
-        } else {
-            if (audioRef.current) {
-                audioRef.current.pause();
-                audioRef.current.currentTime = 0;
-            }
+            default:
+                stopAudio(); // Stop any currently playing audio
 
-            const audioSrc = markerAudio[markerId];
-            if (audioSrc) {
-                const newAudio = new Audio(audioSrc);
-                newAudio.play().then(() => {
-                    setIsAudioPlaying(true); // Audio starts playing
+                const audioSrc = markerAudio[markerId];
+                if (audioSrc) {
+                    const newAudio = new Audio(audioSrc);
+                    newAudio.play().catch((error) => {
+                        console.error("Error playing audio:", error);
+                    });
+
+                    audioRef.current = newAudio;
+                    setIsAudioPlaying(true);
                     setCurrentAudioSrc(audioSrc); // Track the current audio source
-                });
 
-                newAudio.addEventListener('ended', () => {
-                    setIsAudioPlaying(false); // Audio has ended
-                    setCurrentAudioSrc(null); // Reset current audio source
+                    newAudio.addEventListener('ended', stopAudio);
+                } else {
                     setTomVideo(tomWaving); // Ensure the correct video path
-                });
+                }
 
-                audioRef.current = newAudio;
-            } else {
-                setIsAudioPlaying(false); // No audio to play
-                setCurrentAudioSrc(null); // Reset current audio source
-                setTomVideo(tomWaving);
-            }
+                // Set overlay image and show magnified overlay
+                setOverlayImage(markerImages[markerId]);
+                setMagnifiedImageOverlay(true);
+                break;
         }
     };
+
+    // Stop audio when overlay is closed
+    useEffect(() => {
+        if (!magnifiedImageOverlay) {
+            stopAudio();
+        }
+    }, [magnifiedImageOverlay]);
+
 
 
     useEffect(() => {
@@ -388,7 +406,7 @@ Hallo Kinder! Ich bin Tom von den RAKUNS und hier erfahrt ihr etwas über Luft u
                     image={overlayImage}
                     setMagnifiedImageOverlay={setMagnifiedImageOverlay}
                     markerId={markerId} // Pass markerId as a prop
-                    onReadMore={() => navigate(`/learn/${markerId}`)} // Redirect on "Read More" click
+                    onReadMore={() => navigate(`/learn/${markerId}`)}
                 />
             )}
             <LogoModal handleFullScreen={handleFullScreen} audio={parkAudio} />

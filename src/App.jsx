@@ -1,7 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import Rootlayout from "./layouts/Rootlayout"
 import LandingPage from "./pages/LandingPage"
-import FirstPage from "./pages/FirstPage"
 import SecondPage from "./pages/SecondPage"
 import DetailsPage from "./pages/DetailsPage"
 import ParkPanorama from "./pages/ParkPanorama"
@@ -14,10 +13,8 @@ const router = createBrowserRouter([{
       index: true,
       element: <LandingPage />
     },
-    {
-      path: '/first',
-      element: <FirstPage />
-    },
+
+
     {
       path: '/second',
       element: <SecondPage />

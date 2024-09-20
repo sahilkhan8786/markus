@@ -4,14 +4,14 @@ import fullScreenLogo from '../assets/full-screen-logo.png';
 import audioStill from '../assets/audio-still.png';
 import audioGif from '../assets/audio.gif';
 
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import AudioPlayer from './AudioPlyer';
 
 function LogoModal({ audio, handleFullScreen }) {
     const [isPlaying, setIsPlaying] = useState(false);
     // Ref to the container for fullscreen
 
-    const pageRef = useRef(null);
+
 
     // Toggle fullscreen mode
 

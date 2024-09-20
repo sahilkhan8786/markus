@@ -7,7 +7,7 @@ const DetailsPage = () => {
     const { details: markerId } = useParams(); // Retrieve markerId from the URL
     const navigate = useNavigate();
     return (
-        <section className="mx-auto max-w-screen-2xl  flex items-start justify-end">
+        <section className="2xl:mx-auto max-w-screen-2xl  flex items-start justify-end  px-4">
             <div className='w-full bg-white text-black py-6'>
 
                 <button
@@ -38,7 +38,7 @@ const DetailsPage = () => {
                             <motion.div variants={childVariants}>
                                 <iframe
                                     className='w-full aspect-video h-full'
-                                    src={`https://www.youtube.com/embed/${el.videoURL}`}
+                                    src={`https://www.youtube.com/embed/${el.videoURL}?autoplay=1`}
                                     title="YouTube video player"
                                     frameBorder="0"
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

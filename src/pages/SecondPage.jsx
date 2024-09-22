@@ -258,8 +258,6 @@ Hallo Kinder! Ich bin Tom von den RAKUNS und hier erfahrt ihr etwas über Luft u
             overlayElement.classList.add('fade-in-active');
         }
 
-
-
         // Handle specific marker actions
         switch (markerId) {
             case 'html-message-icon':
@@ -281,8 +279,13 @@ Hallo Kinder! Ich bin Tom von den RAKUNS und hier erfahrt ihr etwas über Luft u
                 navigate('/park-panorama');
                 break;
 
-            default:
-                stopAudio(); // Stop any currently playing audio
+            // Check if the markerId is an additional marker
+            case 'marker-text-tom-intro':
+            case 'marker-text-tom-1':
+            case 'marker-text-tom-2':
+            case 'marker-text-tom-3':
+                // Stop audio if playing
+                stopAudio();
 
                 const audioSrc = markerAudio[markerId];
                 if (audioSrc) {
@@ -296,16 +299,36 @@ Hallo Kinder! Ich bin Tom von den RAKUNS und hier erfahrt ihr etwas über Luft u
                     setCurrentAudioSrc(audioSrc); // Track the current audio source
 
                     newAudio.addEventListener('ended', stopAudio);
+                }
+                // Do not set overlay image and do not show magnified overlay for additional markers
+                break;
+
+            default:
+                stopAudio(); // Stop any currently playing audio
+
+                const defaultAudioSrc = markerAudio[markerId];
+                if (defaultAudioSrc) {
+                    const newAudio = new Audio(defaultAudioSrc);
+                    newAudio.play().catch((error) => {
+                        console.error("Error playing audio:", error);
+                    });
+
+                    audioRef.current = newAudio;
+                    setIsAudioPlaying(true);
+                    setCurrentAudioSrc(defaultAudioSrc); // Track the current audio source
+
+                    newAudio.addEventListener('ended', stopAudio);
                 } else {
                     setTomVideo(tomWaving); // Ensure the correct video path
                 }
 
-                // Set overlay image and show magnified overlay
+                // Set overlay image and show magnified overlay for other markers
                 setOverlayImage(markerImages[markerId]);
                 setMagnifiedImageOverlay(true);
                 break;
         }
     };
+
 
     // Stop audio when overlay is closed
     useEffect(() => {

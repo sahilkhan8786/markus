@@ -14,8 +14,8 @@ const MagnifiedImageOverlay = ({ image, setMagnifiedImageOverlay, markerId, onRe
         const mouseX = e.clientX - container.left;
         const mouseY = e.clientY - container.top;
 
-        const offsetX = (mouseX - container.width / 2) * 0.3; // Adjust sensitivity
-        const offsetY = (mouseY - container.height / 2) * 0.3;
+        const offsetX = (mouseX - container.width / 2) * 0.2; // Adjust sensitivity
+        const offsetY = (mouseY - container.height / 2) * 0.2;
 
         setMagnifierPos({
             x: offsetX,

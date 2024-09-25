@@ -559,9 +559,9 @@ Hallo Kinder! Ich bin Tom von den RAKUNS und hier erfahrt ihr etwas über Luft u
 
 
             {/* Display Progress */}
-            <div className="progress" style={{ "--progress": `${progress}%` }}>
+            <div className="progress overflow-hidden" style={{ "--progress": `${progress}%` }}>
+                <p className='text-white  text-2xl text-center  w-full  absolute left-1/2 -translate-x-1/2'>erforscht</p>
                 <div className="bar">
-                    <p className='text-white px-1 text-2xl'>erforscht</p>
                     <div className="progress-value"></div>
                 </div>
             </div>

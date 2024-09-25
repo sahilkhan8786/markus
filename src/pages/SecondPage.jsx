@@ -430,21 +430,19 @@ Hallo Kinder! Ich bin Tom von den RAKUNS und hier erfahrt ihr etwas über Luft u
                 }
                 break;
         }
-        if (!excludedMarkers.includes(markerId) && !clickedMarkers.includes(markerId)) {
-            setClickedMarkers(prevState => [...prevState, markerId]); // Add clicked marker to the state
-        }
         if (!clickedMarkers.includes(markerId) && !excludedMarkers.includes(markerId)) {
-            // Update clicked markers state
             setClickedMarkers((prevState) => {
                 const newClickedMarkers = [...prevState, markerId];
 
-                // Calculate new progress based on the length of clicked markers
+                // Calculate new progress based on the unique markers clicked
                 const newProgress = (newClickedMarkers.length / validMarkers.length) * 100;
                 setProgress(newProgress > 100 ? 100 : newProgress); // Clamp at 100%
 
                 return newClickedMarkers; // Return the new state
             });
         }
+
+
     };
     useEffect(() => {
         // Log clicked markers for debugging

@@ -38,7 +38,7 @@ const MagnifiedImageOverlay = ({ image, setMagnifiedImageOverlay, markerId, onRe
 
             {/* Clip path for magnifier effect */}
             <div
-                className='absolute bg-red-400'
+                className='absolute '
                 style={{
                     top: `calc(50% + ${magnifierPos.y}px - 120px)`, // Adjust to center the clip path based on size
                     left: `calc(50% + ${magnifierPos.x}px + 120px)`,

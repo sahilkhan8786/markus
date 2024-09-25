@@ -84,18 +84,17 @@ body {
     margin: 9em auto;
     border: 1px solid #fff;
     padding: 12px 10px;
-    box-shadow: 0 0 10px #aaa;
     position: absolute;
     bottom: 50px;
     left: 0;
+    background-color: #009ddb;
 }
 
 .progress .bar {
     width: var(--progress);
     height: 100%;
-    background: linear-gradient(green, rgb(32, 255, 32), rgb(5, 88, 26));
+    background: linear-gradient(green, rgb(1, 165, 1), green);
     background-repeat: repeat;
-    box-shadow: 0 0 10px 0px green;
     animation:
         shine 4s ease-in infinite,
         end 1s ease-out 1;

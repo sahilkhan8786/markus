@@ -6,7 +6,7 @@ import "@photo-sphere-viewer/markers-plugin/index.css";
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 // AUDIO FILES
-import introAudio from '/tom-intro-audio.mp3'
+import introAudioTom from '/tom-intro-audio.mp3'
 import tom1Audio from '/tom-audio-1.mp3'
 import tom2Audio from '/tom-audio-2.mp3'
 import tom3Audio from '/tom-audio-3.mp3'
@@ -15,10 +15,13 @@ import treeAudio from '/html-marker-tree.mp3'
 import carAudio from '/html-marker-car.mp3'
 import skyAudio from '/html-marker-sky.mp3'
 import galaxyAudio from '/html-marker-galaxy.mp3'
+import introAudioLola from '/lola-intro-audio.mp3'
 
 // VIDEO FILES
 import tomWaving from '/Tom Waving550x500.mp4'
 import tomTalkin from '/Tom Talkin550x500.mp4'
+import lolaWaving from '/Lola Waving.mp4'
+import lolaTalkin from '/Lola Talking.mp4'
 import LogoModal from '../components/LogoModal';
 import MagnifiedImageOverlay from '../components/MagnifiedImageOverlay';
 
@@ -26,17 +29,23 @@ import MagnifiedImageOverlay from '../components/MagnifiedImageOverlay';
 const SecondPage = () => {
     const [showTomMarkers, setShowTomMarkers] = useState(false);
     const [tomVideo, setTomVideo] = useState(tomWaving)
+    const [lolaVideo, setlolaVideo] = useState(lolaWaving)
     const [magnifiedImageOverlay, setMagnifiedImageOverlay] = useState(false)
     const [overlayImage, setOverlayImage] = useState(null);
     const [interactionTimeout, setInteractionTimeout] = useState(null);
     const [markerId, setMarkerId] = useState(null);
     const [isAudioPlaying, setIsAudioPlaying] = useState(false);
     const [currentAudioSrc, setCurrentAudioSrc] = useState(null);
+    const [clickedMarkers, setClickedMarkers] = useState([]); // Track clicked markers
 
     const viewerRef = useRef(null);
     const markersPluginRef = useRef(null);
     const audioRef = useRef(null);
     const navigate = useNavigate();
+
+
+    const excludedMarkers = ['video-greenscreen-tom', 'video-greenscreen-lola', 'html-message-icon-tom', 'html-message-icon-lola'];
+
 
 
     const pageRef = useRef(null);
@@ -65,7 +74,7 @@ const SecondPage = () => {
     // Markers configuration
     const baseMarkers = [
         {
-            id: 'video-greenscreen',
+            id: 'video-greenscreen-tom',
             videoLayer: tomVideo,
             position: { yaw: -0.6, pitch: 0 },
             chromaKey: {
@@ -75,6 +84,18 @@ const SecondPage = () => {
                 smoothness: 0.1
             },
             size: { width: 500 * 1.5, height: 550 * 1.5 },
+        },
+        {
+            id: 'video-greenscreen-lola',
+            videoLayer: lolaVideo,
+            position: { yaw: 2, pitch: 0 },
+            chromaKey: {
+                enabled: true,
+                color: '#0ed006',
+                similarity: 0.1,
+                smoothness: 0.1
+            },
+            size: { width: 500, height: 550 },
         },
         {
             id: 'html-marker-galaxy',
@@ -109,9 +130,18 @@ const SecondPage = () => {
         },
 
         {
-            id: 'html-message-icon',
+            id: 'html-message-icon-tom',
             html: '<img class="gifs"  src="/speech-bubble.gif"  />',
             position: { yaw: -0.3, pitch: 0 },
+            size: { width: 50, height: 50 },
+            anchor: 'bottom center',
+
+
+        },
+        {
+            id: 'html-message-icon-lola',
+            html: '<img class="gifs"  src="/speech-bubble.gif"  />',
+            position: { yaw: -4, pitch: 0 },
             size: { width: 50, height: 50 },
             anchor: 'bottom center',
 
@@ -155,6 +185,18 @@ Hallo Kinder! Ich bin Tom von den RAKUNS und hier erfahrt ihr etwas über Luft u
 
         },
         {
+            id: 'marker-text-lola-intro',
+            html: `
+                <h1 class='character-intro scene-text'>
+(hustet) Lola hustet... Puh, die Abgase der Autos verschmutzt die Luft. Es stinkt und ich bekomme kaum Luft!
+                </h1>
+            `,
+            position: { yaw: 2.5, pitch: 0.25 },
+            size: { width: 500, height: 100 },
+            anchor: 'bottom left',
+
+        },
+        {
             id: 'marker-text-tom-1',
             html: `
                <p class='scene-text'>
@@ -162,6 +204,18 @@ Hallo Kinder! Ich bin Tom von den RAKUNS und hier erfahrt ihr etwas über Luft u
         </p>
             `,
             position: { yaw: -0.1, pitch: 0 },
+            size: { width: 500, height: 100 },
+            anchor: 'bottom left',
+            zoom: [0.5, 1],
+        },
+        {
+            id: 'marker-text-lola-1',
+            html: `
+               <p class='scene-text'>
+          Warum musst du so husten?
+        </p>
+            `,
+            position: { yaw: 2.5, pitch: 0 },
             size: { width: 500, height: 100 },
             anchor: 'bottom left',
             zoom: [0.5, 1],
@@ -175,6 +229,19 @@ Hallo Kinder! Ich bin Tom von den RAKUNS und hier erfahrt ihr etwas über Luft u
                 </p>
             `,
             position: { yaw: -0.1, pitch: -0.12 },
+            size: { width: 500, height: 100 },
+            anchor: 'bottom left',
+            zoom: [0.5, 1],
+        },
+        {
+            id: 'marker-text-lola-2',
+            html: `
+                <p class='scene-text'>
+               Lass uns das Gelernte einmal zusammenfassen!
+                 
+                </p>
+            `,
+            position: { yaw: 2.5, pitch: -0.12 },
             size: { width: 500, height: 100 },
             anchor: 'bottom left',
             zoom: [0.5, 1],
@@ -196,11 +263,15 @@ Hallo Kinder! Ich bin Tom von den RAKUNS und hier erfahrt ihr etwas über Luft u
         }
     ];
 
+    // Combine baseMarkers and additionalMarkers, then filter out excluded ones
+    const allMarkers = [...baseMarkers, ...additionalMarkers];
+
+    const validMarkers = allMarkers.filter(marker => !excludedMarkers.includes(marker.id));
 
 
     const markerAudio = {
-        'html-message-icon': introAudio,
-        'marker-text-tom-intro': introAudio,
+        'marker-text-tom-intro': introAudioTom,
+        'marker-text-lola-intro': introAudioLola,
         'marker-text-tom-1': tom1Audio,
         'marker-text-tom-2': tom2Audio,
         'marker-text-tom-3': tom3Audio,
@@ -243,6 +314,7 @@ Hallo Kinder! Ich bin Tom von den RAKUNS und hier erfahrt ihr etwas über Luft u
             setIsAudioPlaying(false); // Audio has ended
             setCurrentAudioSrc(null); // Reset current audio source
             setTomVideo(tomWaving); // Ensure the correct video path
+            setlolaVideo(lolaWaving)
         }
     };
 
@@ -260,7 +332,7 @@ Hallo Kinder! Ich bin Tom von den RAKUNS und hier erfahrt ihr etwas über Luft u
 
         // Handle specific marker actions
         switch (markerId) {
-            case 'html-message-icon':
+            case 'html-message-icon-tom':
                 await animateToMarker(0, -0.5);
                 setShowTomMarkers(true);
                 if (markersPluginRef.current) {
@@ -275,14 +347,33 @@ Hallo Kinder! Ich bin Tom von den RAKUNS und hier erfahrt ihr etwas über Luft u
                 setInteractionTimeout(timeout);
                 break;
 
+
+            case 'html-message-icon-lola':
+                await animateToMarker(0, -3.8);
+                setShowTomMarkers(true);
+                if (markersPluginRef.current) {
+                    markersPluginRef.current.setMarkers([...baseMarkers, ...additionalMarkers]);
+                }
+
+                // Set a timeout to hide Tom markers later
+                clearTimeout(interactionTimeout);
+                const timeout2 = setTimeout(() => {
+                    setShowTomMarkers(false);
+                }, 20000);
+                setInteractionTimeout(timeout2);
+                break;
+
             case 'html-bike-icon':
                 navigate('/park-panorama');
                 break;
 
             // Check if the markerId is an additional marker
             case 'marker-text-tom-intro':
+            case 'marker-text-lola-intro':
             case 'marker-text-tom-1':
+            case 'marker-text-lola-1':
             case 'marker-text-tom-2':
+            case 'marker-text-lola-2':
             case 'marker-text-tom-3':
                 // Stop audio if playing
                 stopAudio();
@@ -320,12 +411,18 @@ Hallo Kinder! Ich bin Tom von den RAKUNS und hier erfahrt ihr etwas über Luft u
                     newAudio.addEventListener('ended', stopAudio);
                 } else {
                     setTomVideo(tomWaving); // Ensure the correct video path
+                    setlolaVideo(lolaWaving); // Ensure the correct video path
                 }
 
                 // Set overlay image and show magnified overlay for other markers
-                setOverlayImage(markerImages[markerId]);
-                setMagnifiedImageOverlay(true);
+                if (!excludedMarkers.includes(markerId)) {
+                    setOverlayImage(markerImages[markerId]);
+                    setMagnifiedImageOverlay(true);
+                }
                 break;
+        }
+        if (!excludedMarkers.includes(markerId) && !clickedMarkers.includes(markerId)) {
+            setClickedMarkers(prevState => [...prevState, markerId]); // Add clicked marker to the state
         }
     };
 
@@ -355,8 +452,10 @@ Hallo Kinder! Ich bin Tom von den RAKUNS und hier erfahrt ihr etwas über Luft u
     useEffect(() => {
         if (isAudioPlaying && currentAudioSrc && currentAudioSrc !== parkAudio) {
             setTomVideo(tomTalkin);
+            setlolaVideo(lolaTalkin);
         } else if (!isAudioPlaying) {
             setTomVideo(tomWaving);
+            setlolaVideo(lolaWaving);
         }
     }, [isAudioPlaying, currentAudioSrc]);
 
@@ -423,6 +522,13 @@ Hallo Kinder! Ich bin Tom von den RAKUNS und hier erfahrt ihr etwas über Luft u
             />
             <div id="overlay" className="fade-in">
                 {/* Your overlay content */}
+            </div>
+
+
+            {/* Display Progress */}
+            <div className="progress-container">
+                <p>{`Markers clicked: ${clickedMarkers.length} / ${validMarkers.length}`}</p>
+                <progress value={clickedMarkers.length} max={validMarkers.length}></progress>
             </div>
             {magnifiedImageOverlay && (
                 <MagnifiedImageOverlay

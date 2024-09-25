@@ -16,7 +16,7 @@ const ParkPanorama = () => {
                 className='absolute bottom-20 bg-blue-500 text-white p-2 rounded-md m-4 right-0 text-3xl hover:bg-blue-600'
                 onClick={() => navigate(-1)} // Go back to the last visited page
             >
-                Go Back
+                Zurück
             </button>
             <iframe
                 className="w-full h-full"
@@ -32,7 +32,7 @@ const ParkPanorama = () => {
                 onClick={handleMouseEnter}
 
             >
-                Read More
+                Weitere Infos
             </button>
 
             {isOverlayVisible && (

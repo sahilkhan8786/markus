@@ -75,3 +75,10 @@ body {
     font-family: "Chewy", system-ui;
     color: #009ddb;
 }
+
+.ytp-pause-overlay,
+.ytp-pause-overlay,
+.ytp-related-title,
+.ytp-more-videos-view .ytp-scroll-min {
+    @apply hidden
+}

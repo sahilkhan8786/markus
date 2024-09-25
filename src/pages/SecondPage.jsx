@@ -66,7 +66,7 @@ const SecondPage = () => {
         {
             id: 'video-greenscreen-tom',
             videoLayer: tomVideo,
-            position: { yaw: -0.6, pitch: 0 },
+            position: { yaw: 0.5, pitch: 0 },
             chromaKey: {
                 enabled: true,
                 color: '#0ed006',
@@ -78,7 +78,7 @@ const SecondPage = () => {
         {
             id: 'video-greenscreen-lola',
             videoLayer: lolaVideo,
-            position: { yaw: 2, pitch: 0 },
+            position: { yaw: -2.2, pitch: 0 },
             chromaKey: {
                 enabled: true,
                 color: '#0ed006',
@@ -122,7 +122,7 @@ const SecondPage = () => {
         {
             id: 'html-message-icon-tom',
             html: '<img class="gifs"  src="/speech-bubble.gif"  />',
-            position: { yaw: -0.3, pitch: 0 },
+            position: { yaw: 0.8, pitch: 0 },
             size: { width: 50, height: 50 },
             anchor: 'bottom center',
 
@@ -131,7 +131,7 @@ const SecondPage = () => {
         {
             id: 'html-message-icon-lola',
             html: '<img class="gifs"  src="/speech-bubble.gif"  />',
-            position: { yaw: -4, pitch: 0 },
+            position: { yaw: -1.9, pitch: 0 },
             size: { width: 50, height: 50 },
             anchor: 'bottom center',
 
@@ -140,7 +140,7 @@ const SecondPage = () => {
         {
             id: 'html-bike-icon',
             html: '<img class="gifs"  src="/bike.gif"  />',
-            position: { yaw: -2, pitch: -0.1 },
+            position: { yaw: -2.5, pitch: -0.1 },
             size: { width: 150, height: 150 },
             anchor: 'bottom center',
             tooltip: `
@@ -169,7 +169,7 @@ Hallo Kinder! Ich bin Tom von den RAKUNS und hier erfahrt ihr etwas über Luft u
                     
                 </h1>
             `,
-            position: { yaw: -0.1, pitch: 0.25 },
+            position: { yaw: 0.9, pitch: 0.25 },
             size: { width: 500, height: 100 },
             anchor: 'bottom left',
 
@@ -181,7 +181,7 @@ Hallo Kinder! Ich bin Tom von den RAKUNS und hier erfahrt ihr etwas über Luft u
 (hustet) Lola hustet... Puh, die Abgase der Autos verschmutzt die Luft. Es stinkt und ich bekomme kaum Luft!
                 </h1>
             `,
-            position: { yaw: 2.5, pitch: 0.25 },
+            position: { yaw: -1.8, pitch: 0.25 },
             size: { width: 500, height: 100 },
             anchor: 'bottom left',
 
@@ -193,7 +193,7 @@ Hallo Kinder! Ich bin Tom von den RAKUNS und hier erfahrt ihr etwas über Luft u
           Warum benötigen Lebewesen Luft?
         </p>
             `,
-            position: { yaw: -0.1, pitch: 0 },
+            position: { yaw: 0.9, pitch: 0 },
             size: { width: 500, height: 100 },
             anchor: 'bottom left',
             zoom: [0.5, 1],
@@ -205,7 +205,7 @@ Hallo Kinder! Ich bin Tom von den RAKUNS und hier erfahrt ihr etwas über Luft u
           Warum musst du so husten?
         </p>
             `,
-            position: { yaw: 2.5, pitch: 0 },
+            position: { yaw: -1.8, pitch: 0 },
             size: { width: 500, height: 100 },
             anchor: 'bottom left',
             zoom: [0.5, 1],
@@ -218,7 +218,7 @@ Hallo Kinder! Ich bin Tom von den RAKUNS und hier erfahrt ihr etwas über Luft u
                  
                 </p>
             `,
-            position: { yaw: -0.1, pitch: -0.12 },
+            position: { yaw: 0.9, pitch: -0.12 },
             size: { width: 500, height: 100 },
             anchor: 'bottom left',
             zoom: [0.5, 1],
@@ -231,7 +231,7 @@ Hallo Kinder! Ich bin Tom von den RAKUNS und hier erfahrt ihr etwas über Luft u
                  
                 </p>
             `,
-            position: { yaw: 2.5, pitch: -0.12 },
+            position: { yaw: -1.8, pitch: -0.12 },
             size: { width: 500, height: 100 },
             anchor: 'bottom left',
             zoom: [0.5, 1],
@@ -246,7 +246,7 @@ Hallo Kinder! Ich bin Tom von den RAKUNS und hier erfahrt ihr etwas über Luft u
                 
                 </p>
             `,
-            position: { yaw: -0.1, pitch: -0.24 },
+            position: { yaw: 0.9, pitch: -0.24 },
             size: { width: 500, height: 100 },
             anchor: 'bottom left',
             zoom: [0.5, 1],
@@ -338,7 +338,7 @@ Hallo Kinder! Ich bin Tom von den RAKUNS und hier erfahrt ihr etwas über Luft u
         // Handle specific marker actions
         switch (markerId) {
             case 'html-message-icon-tom':
-                await animateToMarker(0, -0.5);
+                await animateToMarker(0, 1);
                 setShowTomMarkers(true);
                 if (markersPluginRef.current) {
                     markersPluginRef.current.setMarkers([...baseMarkersPark, ...additionalMarkersPark]);
@@ -354,7 +354,7 @@ Hallo Kinder! Ich bin Tom von den RAKUNS und hier erfahrt ihr etwas über Luft u
 
 
             case 'html-message-icon-lola':
-                await animateToMarker(0, -3.8);
+                await animateToMarker(0, -2.2);
                 setShowTomMarkers(true);
                 if (markersPluginRef.current) {
                     markersPluginRef.current.setMarkers([...baseMarkersPark, ...additionalMarkersPark]);
@@ -519,7 +519,7 @@ Hallo Kinder! Ich bin Tom von den RAKUNS und hier erfahrt ihr etwas über Luft u
                 defaultZoomLvl={0.8}
                 minFov={10}
                 maxFov={90}
-                defaultYaw={-0.5}
+                defaultYaw={1}
                 defaultPitch={0}
                 moveSpeed={0.5}
                 plugins={[[MarkersPlugin, { markers: baseMarkersPark }]]}
@@ -531,7 +531,7 @@ Hallo Kinder! Ich bin Tom von den RAKUNS und hier erfahrt ihr etwas über Luft u
 
 
             {/* Display Progress */}
-            <div className="progress-container">
+            <div className="progress-container absolute bottom-0 right-0 z-50">
                 <p>{`Markers clicked: ${clickedMarkers.length} / ${validMarkers.length}`}</p>
                 <progress value={clickedMarkers.length} max={validMarkers.length}></progress>
             </div>

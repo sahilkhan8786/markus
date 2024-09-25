@@ -561,7 +561,7 @@ Hallo Kinder! Ich bin Tom von den RAKUNS und hier erfahrt ihr etwas über Luft u
             {/* Display Progress */}
             <div className="progress" style={{ "--progress": `${progress}%` }}>
                 <div className="bar">
-                    <p className='text-white px-1'>Experience</p>
+                    <p className='text-white px-1 text-2xl'>erforscht</p>
                     <div className="progress-value"></div>
                 </div>
             </div>

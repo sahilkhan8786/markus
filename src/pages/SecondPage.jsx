@@ -25,6 +25,8 @@ import lolaWaving from '/Lola Waving.mp4'
 import lolaTalkin from '/Lola Talking.mp4'
 import LogoModal from '../components/LogoModal';
 import MagnifiedImageOverlay from '../components/MagnifiedImageOverlay';
+import { useParkProgress } from '../context/ParkProgressContext';
+
 
 
 
@@ -38,8 +40,8 @@ const SecondPage = () => {
     const [markerId, setMarkerId] = useState(null);
     const [isAudioPlaying, setIsAudioPlaying] = useState(false);
     const [currentAudioSrc, setCurrentAudioSrc] = useState(null);
-    const [clickedMarkers, setClickedMarkers] = useState([]); // Track clicked markers
-    const [progress, setProgress] = useState(0); // Tr
+
+    const { clickedMarkers, setClickedMarkers, progress, setProgress } = useParkProgress();
 
 
     const viewerRef = useRef(null);
@@ -430,16 +432,23 @@ Hallo Kinder! Ich bin Tom von den RAKUNS und hier erfahrt ihr etwas über Luft u
                 }
                 break;
         }
-        if (!clickedMarkers.includes(markerId) && !excludedMarkers.includes(markerId)) {
-            setClickedMarkers((prevState) => {
-                const newClickedMarkers = [...prevState, markerId];
+        if (!excludedMarkers.includes(markerId)) {
+            // Check if the marker has already been clicked
+            if (!clickedMarkers.includes(markerId)) {
+                // Marker is clicked for the first time
+                setClickedMarkers((prevState) => {
+                    const newClickedMarkers = [...prevState, markerId];
 
-                // Calculate new progress based on the unique markers clicked
-                const newProgress = (newClickedMarkers.length / validMarkers.length) * 100;
-                setProgress(newProgress > 100 ? 100 : newProgress); // Clamp at 100%
+                    // Calculate new progress based on the unique markers clicked
+                    const newProgress = (newClickedMarkers.length / validMarkers.length) * 100;
+                    setProgress(newProgress > 100 ? 100 : newProgress); // Clamp at 100%
 
-                return newClickedMarkers; // Return the new state
-            });
+                    return newClickedMarkers; // Return the new state
+                });
+            } else {
+                // Marker has already been clicked, so we do not update progress
+                console.log(`Marker ${markerId} has already been clicked. Progress remains the same.`);
+            }
         }
 
 

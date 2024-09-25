@@ -77,11 +77,11 @@ const MagnifiedImageOverlay = ({ image, setMagnifiedImageOverlay, markerId, onRe
                 }}
                 className='cursor-pointer z-50 w-[700px] absolute' // Adjust size as needed
             />
-            <h1 className='z-50 bg-green-500 absolute text-white text-4xl p-3 rounded-lg' style={{
+            {/* <h1 className='z-50 bg-green-500 absolute text-white text-4xl p-3 rounded-lg' style={{
                 top: `calc(45% + ${magnifierPos.y}px)`, // Center the magnifier icon
                 left: `calc(42% + ${magnifierPos.x}px)`, // Center the magnifier icon
                 transform: 'translate(-50%, -50%)',
-            }}>Photosynthesis</h1>
+            }}>Photosynthesis</h1> */}
         </div>
     );
 };

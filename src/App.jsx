@@ -4,6 +4,7 @@ import LandingPage from "./pages/LandingPage"
 import SecondPage from "./pages/SecondPage"
 import DetailsPage from "./pages/DetailsPage"
 import ParkPanorama from "./pages/ParkPanorama"
+import { ParkProgressProvider } from "./context/ParkProgressContext"
 
 const router = createBrowserRouter([{
   path: '/',
@@ -17,7 +18,10 @@ const router = createBrowserRouter([{
 
     {
       path: '/second',
-      element: <SecondPage />
+      element:
+
+        <SecondPage />
+
     },
     {
       path: '/learn/:details',

@@ -24,6 +24,7 @@ import lolaWaving from '/Lola Waving.mp4'
 import lolaTalkin from '/Lola Talking.mp4'
 import LogoModal from '../components/LogoModal';
 import MagnifiedImageOverlay from '../components/MagnifiedImageOverlay';
+import { additionalMarkersPark, baseMarkersPark } from '../constant';
 
 
 const SecondPage = () => {
@@ -72,199 +73,10 @@ const SecondPage = () => {
     };
 
     // Markers configuration
-    const baseMarkers = [
-        {
-            id: 'video-greenscreen-tom',
-            videoLayer: tomVideo,
-            position: { yaw: -0.6, pitch: 0 },
-            chromaKey: {
-                enabled: true,
-                color: '#0ed006',
-                similarity: 0.1,
-                smoothness: 0.1
-            },
-            size: { width: 500 * 1.5, height: 550 * 1.5 },
-        },
-        {
-            id: 'video-greenscreen-lola',
-            videoLayer: lolaVideo,
-            position: { yaw: 2, pitch: 0 },
-            chromaKey: {
-                enabled: true,
-                color: '#0ed006',
-                similarity: 0.1,
-                smoothness: 0.1
-            },
-            size: { width: 500, height: 550 },
-        },
-        {
-            id: 'html-marker-galaxy',
-            html: '<img class="gifs" src="/plus.gif"  />',
-            position: { yaw: 0.4, pitch: 0.32 },
-            size: { width: 50, height: 50 },
-            anchor: 'bottom center',
 
-        }, {
-            id: 'html-marker-sky',
-            html: '<img class="gifs" src="/plus.gif"  />',
-            position: { yaw: -2.4, pitch: 0.3 },
-            size: { width: 50, height: 50 },
-            anchor: 'bottom center',
-
-        },
-        {
-            id: 'html-marker-tree',
-            html: '<img class="gifs"  src="/plus.gif"  />',
-            position: { yaw: -1.5, pitch: 0.3 },
-            size: { width: 50, height: 50 },
-            anchor: 'bottom center',
-
-        },
-        {
-            id: 'html-marker-car',
-            html: '<img class="gifs" src="/plus.gif"  />',
-            position: { yaw: -3.12, pitch: -0.08 },
-            size: { width: 50, height: 50 },
-            anchor: 'bottom center',
-
-        },
-
-        {
-            id: 'html-message-icon-tom',
-            html: '<img class="gifs"  src="/speech-bubble.gif"  />',
-            position: { yaw: -0.3, pitch: 0 },
-            size: { width: 50, height: 50 },
-            anchor: 'bottom center',
-
-
-        },
-        {
-            id: 'html-message-icon-lola',
-            html: '<img class="gifs"  src="/speech-bubble.gif"  />',
-            position: { yaw: -4, pitch: 0 },
-            size: { width: 50, height: 50 },
-            anchor: 'bottom center',
-
-
-        },
-        {
-            id: 'html-bike-icon',
-            html: '<img class="gifs"  src="/bike.gif"  />',
-            position: { yaw: -2, pitch: -0.1 },
-            size: { width: 150, height: 150 },
-            anchor: 'bottom center',
-            tooltip: `
-                <div class="custom-tooltip">
-                <img src="/cycle.jpeg" alt="Bike Tour Image" class="cycle-image" />
-                    <p>Wir fahren mit dem Fahrrad! Kleine VR Tour mit dem Fahrrad. Umweltfreundlich, gesund und gut für die Luft!</p>
-                </div>
-            `,
-            trigger: "click"
-
-
-        },
-
-        // Other static markers...
-    ];
-
-    const additionalMarkers = [
-
-        // Additional markers that appear based on state {
-        {
-            id: 'marker-text-tom-intro',
-            html: `
-                <h1 class='character-intro scene-text'>
-Hallo Kinder! Ich bin Tom von den RAKUNS und hier erfahrt ihr etwas über Luft und warum diese für alle Lebewesen wichtig ist
-
-                    
-                </h1>
-            `,
-            position: { yaw: -0.1, pitch: 0.25 },
-            size: { width: 500, height: 100 },
-            anchor: 'bottom left',
-
-        },
-        {
-            id: 'marker-text-lola-intro',
-            html: `
-                <h1 class='character-intro scene-text'>
-(hustet) Lola hustet... Puh, die Abgase der Autos verschmutzt die Luft. Es stinkt und ich bekomme kaum Luft!
-                </h1>
-            `,
-            position: { yaw: 2.5, pitch: 0.25 },
-            size: { width: 500, height: 100 },
-            anchor: 'bottom left',
-
-        },
-        {
-            id: 'marker-text-tom-1',
-            html: `
-               <p class='scene-text'>
-          Warum benötigen Lebewesen Luft?
-        </p>
-            `,
-            position: { yaw: -0.1, pitch: 0 },
-            size: { width: 500, height: 100 },
-            anchor: 'bottom left',
-            zoom: [0.5, 1],
-        },
-        {
-            id: 'marker-text-lola-1',
-            html: `
-               <p class='scene-text'>
-          Warum musst du so husten?
-        </p>
-            `,
-            position: { yaw: 2.5, pitch: 0 },
-            size: { width: 500, height: 100 },
-            anchor: 'bottom left',
-            zoom: [0.5, 1],
-        },
-        {
-            id: 'marker-text-tom-2',
-            html: `
-                <p class='scene-text'>
-                Wo sind wir hier?
-                 
-                </p>
-            `,
-            position: { yaw: -0.1, pitch: -0.12 },
-            size: { width: 500, height: 100 },
-            anchor: 'bottom left',
-            zoom: [0.5, 1],
-        },
-        {
-            id: 'marker-text-lola-2',
-            html: `
-                <p class='scene-text'>
-               Lass uns das Gelernte einmal zusammenfassen!
-                 
-                </p>
-            `,
-            position: { yaw: 2.5, pitch: -0.12 },
-            size: { width: 500, height: 100 },
-            anchor: 'bottom left',
-            zoom: [0.5, 1],
-        },
-        {
-            id: 'marker-text-tom-3',
-            html: `
-                <p class='scene-text'>
-
-             Was kann ich hier erkunden?
-                 
-                
-                </p>
-            `,
-            position: { yaw: -0.1, pitch: -0.24 },
-            size: { width: 500, height: 100 },
-            anchor: 'bottom left',
-            zoom: [0.5, 1],
-        }
-    ];
 
     // Combine baseMarkers and additionalMarkers, then filter out excluded ones
-    const allMarkers = [...baseMarkers, ...additionalMarkers];
+    const allMarkers = [...baseMarkersPark, ...additionalMarkersPark];
 
     const validMarkers = allMarkers.filter(marker => !excludedMarkers.includes(marker.id));
 
@@ -336,7 +148,7 @@ Hallo Kinder! Ich bin Tom von den RAKUNS und hier erfahrt ihr etwas über Luft u
                 await animateToMarker(0, -0.5);
                 setShowTomMarkers(true);
                 if (markersPluginRef.current) {
-                    markersPluginRef.current.setMarkers([...baseMarkers, ...additionalMarkers]);
+                    markersPluginRef.current.setMarkers([...baseMarkersPark, ...additionalMarkersPark]);
                 }
 
                 // Set a timeout to hide Tom markers later
@@ -352,7 +164,7 @@ Hallo Kinder! Ich bin Tom von den RAKUNS und hier erfahrt ihr etwas über Luft u
                 await animateToMarker(0, -3.8);
                 setShowTomMarkers(true);
                 if (markersPluginRef.current) {
-                    markersPluginRef.current.setMarkers([...baseMarkers, ...additionalMarkers]);
+                    markersPluginRef.current.setMarkers([...baseMarkersPark, ...additionalMarkersPark]);
                 }
 
                 // Set a timeout to hide Tom markers later
@@ -439,10 +251,10 @@ Hallo Kinder! Ich bin Tom von den RAKUNS und hier erfahrt ihr etwas über Luft u
     useEffect(() => {
         if (markersPluginRef.current) {
             const markersPlugin = markersPluginRef.current;
-            const allMarkers = [...baseMarkers];
+            const allMarkers = [...baseMarkersPark];
 
             if (showTomMarkers) {
-                allMarkers.push(...additionalMarkers);
+                allMarkers.push(...additionalMarkersPark);
             }
 
             markersPlugin.setMarkers(allMarkers);
@@ -495,15 +307,15 @@ Hallo Kinder! Ich bin Tom von den RAKUNS und hier erfahrt ihr etwas über Luft u
     useEffect(() => {
         if (markersPluginRef.current) {
             const markersPlugin = markersPluginRef.current;
-            const allMarkers = [...baseMarkers];
+            const allMarkers = [...baseMarkersPark];
 
             if (showTomMarkers) {
-                allMarkers.push(...additionalMarkers);
+                allMarkers.push(...additionalMarkersPark);
             }
 
             markersPlugin.setMarkers(allMarkers);
         }
-    }, [showTomMarkers, tomVideo]);
+    }, [showTomMarkers, tomVideo, lolaVideo]);
 
     return (
         <div ref={pageRef}>
@@ -517,7 +329,7 @@ Hallo Kinder! Ich bin Tom von den RAKUNS und hier erfahrt ihr etwas über Luft u
                 defaultYaw={-0.5}
                 defaultPitch={0}
                 moveSpeed={0.5}
-                plugins={[[MarkersPlugin, { markers: baseMarkers }]]}
+                plugins={[[MarkersPlugin, { markers: baseMarkersPark }]]}
                 ref={viewerRef}
             />
             <div id="overlay" className="fade-in">

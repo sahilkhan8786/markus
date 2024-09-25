@@ -16,6 +16,7 @@ import carAudio from '/html-marker-car.mp3'
 import skyAudio from '/html-marker-sky.mp3'
 import galaxyAudio from '/html-marker-galaxy.mp3'
 import introAudioLola from '/lola-intro-audio.mp3'
+import lola2Audio from '/lola-audio-2.mp3'
 
 // VIDEO FILES
 import tomWaving from '/Tom Waving550x500.mp4'
@@ -38,6 +39,8 @@ const SecondPage = () => {
     const [isAudioPlaying, setIsAudioPlaying] = useState(false);
     const [currentAudioSrc, setCurrentAudioSrc] = useState(null);
     const [clickedMarkers, setClickedMarkers] = useState([]); // Track clicked markers
+    const [progress, setProgress] = useState(0); // Tr
+
 
     const viewerRef = useRef(null);
     const markersPluginRef = useRef(null);
@@ -284,6 +287,7 @@ Hallo Kinder! Ich bin Tom von den RAKUNS und hier erfahrt ihr etwas über Luft u
         'html-marker-car': carAudio,
         'html-marker-galaxy': galaxyAudio,
         'html-marker-sky': skyAudio,
+        'marker-text-lola-2': lola2Audio
     };
 
 
@@ -429,7 +433,24 @@ Hallo Kinder! Ich bin Tom von den RAKUNS und hier erfahrt ihr etwas über Luft u
         if (!excludedMarkers.includes(markerId) && !clickedMarkers.includes(markerId)) {
             setClickedMarkers(prevState => [...prevState, markerId]); // Add clicked marker to the state
         }
+        if (!clickedMarkers.includes(markerId) && !excludedMarkers.includes(markerId)) {
+            // Update clicked markers state
+            setClickedMarkers((prevState) => {
+                const newClickedMarkers = [...prevState, markerId];
+
+                // Calculate new progress based on the length of clicked markers
+                const newProgress = (newClickedMarkers.length / validMarkers.length) * 100;
+                setProgress(newProgress > 100 ? 100 : newProgress); // Clamp at 100%
+
+                return newClickedMarkers; // Return the new state
+            });
+        }
     };
+    useEffect(() => {
+        // Log clicked markers for debugging
+        console.log("Updated Clicked Markers:", clickedMarkers);
+        console.log("Current Progress:", progress);
+    }, [clickedMarkers, progress]);
 
 
     // Stop audio when overlay is closed
@@ -531,9 +552,10 @@ Hallo Kinder! Ich bin Tom von den RAKUNS und hier erfahrt ihr etwas über Luft u
 
 
             {/* Display Progress */}
-            <div className="progress-container absolute bottom-0 right-0 z-50">
-                <p>{`Markers clicked: ${clickedMarkers.length} / ${validMarkers.length}`}</p>
-                <progress value={clickedMarkers.length} max={validMarkers.length}></progress>
+            <div className="progress" style={{ "--progress": `${progress}%` }}>
+                <div className="bar">
+                    <div className="progress-value"></div>
+                </div>
             </div>
             {magnifiedImageOverlay && (
                 <MagnifiedImageOverlay

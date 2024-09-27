@@ -7,7 +7,7 @@ const DetailsPage = () => {
     const { details: markerId } = useParams(); // Retrieve markerId from the URL
     const navigate = useNavigate();
     return (
-        <section className="  flex items-start justify-end  px-4 font-mullish">
+        <section className="  flex items-start justify-end  px-4 ">
             <div className='w-full bg-white text-black py-6'>
 
                 <button
@@ -30,14 +30,14 @@ const DetailsPage = () => {
                             </h1>
                         )}
                         {el?.detailBeforeVideo?.split(',').map(para => (
-                            <motion.p variants={childVariants} key={para} className='2xl:mx-auto max-w-screen-2xl w-[60%] text-left  '>
+                            <motion.p variants={childVariants} key={para} className='w-full  md:w-[60%] mx-auto max-w-screen-2xl w-[60%] text-left  font-mullish'>
                                 {para}
                             </motion.p>
                         ))}
                         {el?.videoURL && (
                             <motion.div variants={childVariants} className='bg-[#91a1cc]'>
                                 <iframe
-                                    className=' aspect-video w-[60%] mx-auto max-w-screen-2xl'
+                                    className=' aspect-video mx-auto max-w-screen-2xl w-full md:w-[60%]'
                                     src={`https://www.youtube.com/embed/${el.videoURL}?autoplay=1&loop=1&playlist=${el.videoURL}&mute=1`}
                                     title="YouTube player"
                                     frameBorder="0"
@@ -47,7 +47,7 @@ const DetailsPage = () => {
                             </motion.div>
                         )}
                         {el.detailsAfterVideo?.split(',').map(para => (
-                            <motion.p variants={childVariants} key={para} className='w-[60%] text-left 2xl:mx-auto max-w-screen-2xl'>
+                            <motion.p variants={childVariants} key={para} className='  md:w-[60%] text-left mx-auto max-w-screen-2xl font-mullish'>
                                 {para}
                             </motion.p>
                         ))}

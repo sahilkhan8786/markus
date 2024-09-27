@@ -12,7 +12,6 @@ function LogoModal({ audio, handleFullScreen }) {
     // Ref to the container for fullscreen
 
 
-
     // Toggle fullscreen mode
 
 

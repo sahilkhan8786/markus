@@ -6,14 +6,16 @@ const AudioPlayer = ({ audio, isPlaying }) => {
 
     // Play or pause the audio when `isPlaying` changes
     useEffect(() => {
-        if (audioRef.current) {
-            if (isPlaying) {
-                audioRef.current.play();
-            } else {
-                audioRef.current.pause();
-            }
-        }
-    }, [isPlaying]); // Re-run when `isPlaying` changes
+        audioRef.current.play().then(() => {
+            // Unmute the audio after a delay or on some user interaction.
+            setTimeout(() => {
+                audioRef.current.muted = false;
+            }, 1000);
+        }).catch(error => {
+            console.log(error)
+            console.log('Autoplay is blocked');
+        });
+    }, [isPlaying]);// Re-run when `isPlaying` changes
 
     return (
         <div>

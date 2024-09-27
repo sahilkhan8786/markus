@@ -432,23 +432,13 @@ Hallo Kinder! Ich bin Tom von den RAKUNS und hier erfahrt ihr etwas über Luft u
                 }
                 break;
         }
-        if (!excludedMarkers.includes(markerId)) {
-            // Check if the marker has already been clicked
-            if (!clickedMarkers.includes(markerId)) {
-                // Marker is clicked for the first time
-                setClickedMarkers((prevState) => {
-                    const newClickedMarkers = [...prevState, markerId];
-
-                    // Calculate new progress based on the unique markers clicked
-                    const newProgress = (newClickedMarkers.length / validMarkers.length) * 100;
-                    setProgress(newProgress > 100 ? 100 : newProgress); // Clamp at 100%
-
-                    return newClickedMarkers; // Return the new state
-                });
-            } else {
-                // Marker has already been clicked, so we do not update progress
-                console.log(`Marker ${markerId} has already been clicked. Progress remains the same.`);
-            }
+        if (!excludedMarkers.includes(markerId) && !clickedMarkers.includes(markerId)) {
+            setClickedMarkers((prevState) => {
+                const newClickedMarkers = [...prevState, markerId];
+                const newProgress = (newClickedMarkers.length / validMarkers.length) * 100;
+                setProgress(newProgress > 100 ? 100 : newProgress);
+                return newClickedMarkers;
+            });
         }
 
 
@@ -483,7 +473,7 @@ Hallo Kinder! Ich bin Tom von den RAKUNS und hier erfahrt ihr etwas über Luft u
     }, [showTomMarkers]);
 
     useEffect(() => {
-        if (isAudioPlaying && currentAudioSrc && currentAudioSrc !== parkAudio) {
+        if (isAudioPlaying && currentAudioSrc) {
             setTomVideo(tomTalkin);
             setlolaVideo(lolaTalkin);
         } else if (!isAudioPlaying) {
@@ -560,7 +550,7 @@ Hallo Kinder! Ich bin Tom von den RAKUNS und hier erfahrt ihr etwas über Luft u
 
             {/* Display Progress */}
             <div className="progress overflow-hidden" style={{ "--progress": `${progress}%` }}>
-                <p className='text-white  text-2xl text-center  w-full  absolute left-1/2 -translate-x-1/2'>erforscht</p>
+                <p className='text-white  text-normal text-center  w-full  absolute left-1/2 -translate-x-1/2'>WIEVIEL HAST DU BEREITS ENTDECKT?</p>
                 <div className="bar">
                     <div className="progress-value"></div>
                 </div>

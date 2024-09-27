@@ -37,7 +37,7 @@ const DetailsPage = () => {
                         {el?.videoURL && (
                             <motion.div variants={childVariants} className='bg-[#91a1cc]'>
                                 <iframe
-                                    className=' aspect-video w-[60%] 2xl:mx-auto max-w-screen-2xl'
+                                    className=' aspect-video w-[60%] mx-auto max-w-screen-2xl'
                                     src={`https://www.youtube.com/embed/${el.videoURL}?autoplay=1&loop=1&playlist=${el.videoURL}&mute=1`}
                                     title="YouTube video player"
                                     frameBorder="0"

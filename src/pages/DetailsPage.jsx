@@ -39,7 +39,7 @@ const DetailsPage = () => {
                                 <iframe
                                     className=' aspect-video w-[60%] mx-auto max-w-screen-2xl'
                                     src={`https://www.youtube.com/embed/${el.videoURL}?autoplay=1&loop=1&playlist=${el.videoURL}&mute=1`}
-                                    title="YouTube video player"
+                                    title="YouTube player"
                                     frameBorder="0"
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                     allowFullScreen

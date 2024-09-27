@@ -8,7 +8,7 @@ import { useState } from 'react';
 import AudioPlayer from './AudioPlyer';
 
 function LogoModal({ audio, handleFullScreen }) {
-    const [isPlaying, setIsPlaying] = useState(false);
+    const [isPlaying, setIsPlaying] = useState(true);
     // Ref to the container for fullscreen
 
 

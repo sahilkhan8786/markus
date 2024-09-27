@@ -7,7 +7,7 @@ const DetailsPage = () => {
     const { details: markerId } = useParams(); // Retrieve markerId from the URL
     const navigate = useNavigate();
     return (
-        <section className="  flex items-start justify-end  px-4">
+        <section className="  flex items-start justify-end  px-4 font-mullish">
             <div className='w-full bg-white text-black py-6'>
 
                 <button
@@ -30,7 +30,7 @@ const DetailsPage = () => {
                             </h1>
                         )}
                         {el?.detailBeforeVideo?.split(',').map(para => (
-                            <motion.p variants={childVariants} key={para} className='2xl:mx-auto max-w-screen-2xl'>
+                            <motion.p variants={childVariants} key={para} className='2xl:mx-auto max-w-screen-2xl w-[60%] text-left  '>
                                 {para}
                             </motion.p>
                         ))}
@@ -47,7 +47,7 @@ const DetailsPage = () => {
                             </motion.div>
                         )}
                         {el.detailsAfterVideo?.split(',').map(para => (
-                            <motion.p variants={childVariants} key={para} className='2xl:mx-auto max-w-screen-2xl'>
+                            <motion.p variants={childVariants} key={para} className='w-[60%] text-left 2xl:mx-auto max-w-screen-2xl'>
                                 {para}
                             </motion.p>
                         ))}

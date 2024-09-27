@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import magnifierImage from '/magnifier.png';
 
-const MagnifiedImageOverlay = ({ image, setMagnifiedImageOverlay, markerId, onReadMore }) => {
+const MagnifiedImageOverlay = ({ text, image, setMagnifiedImageOverlay, markerId, onReadMore }) => {
     const [showDetails, setShowDetails] = useState(false);
     const [magnifierPos, setMagnifierPos] = useState({ x: 0, y: 0 });
 
@@ -77,12 +77,18 @@ const MagnifiedImageOverlay = ({ image, setMagnifiedImageOverlay, markerId, onRe
                 }}
                 className='cursor-pointer z-50 w-[700px] absolute' // Adjust size as needed
             />
-            <h1 className='z-50 bg-green-500 absolute text-white text-4xl p-3 rounded-lg' style={{
-                top: `calc(45% + ${magnifierPos.y}px)`, // Center the magnifier icon
-                left: `calc(42% + ${magnifierPos.x}px)`, // Center the magnifier icon
+            <h1 className='z-50 bg-[#009ddb] absolute text-white text-xl p-3 rounded-lg' style={{
+                top: `calc(35% + ${magnifierPos.y}px)`, // Center the magnifier icon
+                left: `calc(56% + ${magnifierPos.x}px)`, // Center the magnifier icon
                 transform: 'translate(-50%, -50%)',
             }}>Klicke um mehr zu
                 erfahren</h1>
+            <p className='z-50 bg-[#009ddb] absolute text-white text-xl p-3 rounded-lg' style={{
+                top: `5%`, // Center the magnifier icon
+                left: `50%`, // Center the magnifier icon
+                transform: 'translate(-50%, -50%)',
+            }}>{text}</p>
+
         </div>
     );
 };

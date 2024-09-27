@@ -36,6 +36,7 @@ const SecondPage = () => {
     const [lolaVideo, setlolaVideo] = useState(lolaWaving)
     const [magnifiedImageOverlay, setMagnifiedImageOverlay] = useState(false)
     const [overlayImage, setOverlayImage] = useState(null);
+    const [overlayText, setOverlayText] = useState(null);
     const [interactionTimeout, setInteractionTimeout] = useState(null);
     const [markerId, setMarkerId] = useState(null);
     const [isAudioPlaying, setIsAudioPlaying] = useState(false);
@@ -267,7 +268,15 @@ Hallo Kinder! Ich bin Tom von den RAKUNS und hier erfahrt ihr etwas über Luft u
         'html-marker-tree': '/html-marker-tree.png',
         'html-marker-car': '/html-marker-car.jpg',
 
-        // Add more if needed
+
+    };
+    const markerTexts = {
+        'html-marker-galaxy': 'Warum können wir die Luft nicht sehen?',
+        'html-marker-sky': ' Luft zum Atmen',
+        'html-marker-tree': 'Pflanzen sind  kleine Luftreiniger',
+        'html-marker-car': 'Autoabgase',
+
+
     };
 
     // Markers configuration
@@ -428,6 +437,7 @@ Hallo Kinder! Ich bin Tom von den RAKUNS und hier erfahrt ihr etwas über Luft u
                 // Set overlay image and show magnified overlay for other markers
                 if (!excludedMarkers.includes(markerId)) {
                     setOverlayImage(markerImages[markerId]);
+                    setOverlayText(markerTexts[markerId]);
                     setMagnifiedImageOverlay(true);
                 }
                 break;
@@ -558,6 +568,7 @@ Hallo Kinder! Ich bin Tom von den RAKUNS und hier erfahrt ihr etwas über Luft u
             {magnifiedImageOverlay && (
                 <MagnifiedImageOverlay
                     image={overlayImage}
+                    text={overlayText}
                     setMagnifiedImageOverlay={setMagnifiedImageOverlay}
                     markerId={markerId} // Pass markerId as a prop
                     onReadMore={() => navigate(`/learn/${markerId}`)}

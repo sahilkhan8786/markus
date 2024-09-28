@@ -95,7 +95,7 @@ const MagnifiedImageOverlay = ({ text, image, setMagnifiedImageOverlay, markerId
                 // }}
                 >Klicke um mehr zu
                     erfahren</h1>
-                <p className='z-40 text-[#009ddb] bg-[#f4f5fa] absolute  w-1/2 text-4xl p-3 rounded-lg top-10 left-0 '
+                <p className='z-40 text-[#009ddb] bg-[#f4f5fa] absolute  w-1/2 text-4xl pr-12 p-3 rounded-lg top-10 left-0  rounded-br-full'
                 //  style={{
                 //     top: `calc(20% + ${magnifierPos.y}px)`, // Center the magnifier icon
                 //     left: `calc(20% + ${magnifierPos.x}px)`, // Center the magnifier icon

@@ -29,11 +29,6 @@ const DetailsPage = () => {
                                 {el.heading}
                             </h1>
                         )}
-                        {el?.detailBeforeVideo?.split(',').map(para => (
-                            <motion.p variants={childVariants} key={para} className='w-full  md:w-[60%] mx-auto max-w-screen-2xl w-[60%] text-left  font-mullish'>
-                                {para}
-                            </motion.p>
-                        ))}
                         {el?.videoURL && (
                             <motion.div variants={childVariants} className='bg-[#91a1cc]'>
                                 <iframe
@@ -46,11 +41,108 @@ const DetailsPage = () => {
                                 ></iframe>
                             </motion.div>
                         )}
-                        {el.detailsAfterVideo?.split(',').map(para => (
-                            <motion.p variants={childVariants} key={para} className='  md:w-[60%] text-left mx-auto max-w-screen-2xl font-mullish'>
-                                {para}
+                        {el?.title &&
+                            <motion.p variants={childVariants} className=' md:w-[60%] mx-auto max-w-screen-2xl w-full text-left  font-mullish font-bold mt-4'>
+                                {el.title}
                             </motion.p>
-                        ))}
+                        }
+                        {el?.detailBeforeVideo &&
+                            <motion.p variants={childVariants} className=' md:w-[60%] mx-auto max-w-screen-2xl w-full text-left  font-mullish mt-4'>
+                                {el.detailBeforeVideo}
+                            </motion.p>
+                        }
+                        {el?.para1 &&
+                            <motion.p variants={childVariants} className=' md:w-[60%] mx-auto max-w-screen-2xl w-full text-left  font-mullish  my-4'>
+                                {el.para1}
+                            </motion.p>
+                        }
+                        {el?.para2 &&
+                            <motion.p variants={childVariants} className=' md:w-[60%] mx-auto max-w-screen-2xl w-full text-left  font-mullish  my-4'>
+                                {el.para2}
+                            </motion.p>
+                        }
+                        <div>
+
+                            {el?.paraInnerHeading1 &&
+                                <motion.p variants={childVariants} className=' md:w-[60%] mx-auto max-w-screen-2xl w-full text-left  font-mullish  '>
+                                    {el.paraInnerHeading1}
+                                </motion.p>
+                            }
+                            {el?.para3 &&
+                                <motion.p variants={childVariants} className=' md:w-[60%] mx-auto max-w-screen-2xl w-full text-left  font-mullish d mb-4'>
+                                    {el.para3}
+                                </motion.p>
+                            }
+                        </div>
+                        {el?.para4 &&
+                            <motion.p variants={childVariants} className=' md:w-[60%] mx-auto max-w-screen-2xl w-[full text-left  font-mullish  my-4'>
+                                {el.para4}
+                            </motion.p>
+                        }
+                        {el?.innerHeading &&
+                            <motion.p variants={childVariants} className=' md:w-[60%] mx-auto max-w-screen-2xl w-full text-left  font-mullish font-bold mt-4'>
+                                {el?.innerHeading}
+                            </motion.p>
+                        }
+                        <div className={`flex flex-col  ${el?.paraInnerHeading2 && 'my-3'}`}>
+
+                            {el?.paraInnerHeading2 &&
+                                <motion.p variants={childVariants} className=' md:w-[60%] mx-auto max-w-screen-2xl w-full text-left  font-mullish font-bold '>
+                                    {el?.paraInnerHeading2}
+                                </motion.p>
+                            }
+                            {el?.paraInnerHeading2Details &&
+                                <motion.p variants={childVariants} className=' md:w-[60%] mx-auto max-w-screen-2xl w-full text-left  font-mullish '>
+                                    {el?.paraInnerHeading2Details}
+                                </motion.p>
+                            }
+                        </div>
+                        <div className={`flex flex-col  ${el?.paraInnerHeading3 && 'my-3'}`}>
+
+                            {el?.paraInnerHeading3 &&
+                                <motion.p variants={childVariants} className=' md:w-[60%] mx-auto max-w-screen-2xl w-full text-left  font-mullish font-bold '>
+                                    {el?.paraInnerHeading3}
+                                </motion.p>
+                            }
+                            {el?.paraInnerHeading3Details &&
+                                <motion.p variants={childVariants} className=' md:w-[60%] mx-auto max-w-screen-2xl w-full text-left  font-mullish '>
+                                    {el?.paraInnerHeading3Details}
+                                </motion.p>
+                            }
+                        </div>
+
+                        <div className={`flex flex-col  ${el?.paraInnerHeading4 && 'my-3'}`}>
+
+                            {el?.paraInnerHeading4 &&
+                                <motion.p variants={childVariants} className=' md:w-[60%] mx-auto max-w-screen-2xl w-full text-left  font-mullish font-bold '>
+                                    {el?.paraInnerHeading4}
+                                </motion.p>
+                            }
+                            {el?.paraInnerHeading4Details &&
+                                <motion.p variants={childVariants} className=' md:w-[60%] mx-auto max-w-screen-2xl w-full text-left  font-mullish '>
+                                    {el?.paraInnerHeading4Details}
+                                </motion.p>
+                            }
+                        </div>
+
+
+                        {el?.detailsAfterVideo &&
+                            <motion.p variants={childVariants} className=' md:w-[60%] mx-auto max-w-screen-2xl w-[60%] text-left  font-mullish'>
+                                {el.detailsAfterVideo}
+                            </motion.p>
+                        }
+
+                        {el?.moreDetailsAfterVideo &&
+                            <motion.p variants={childVariants} className=' md:w-[60%] mx-auto max-w-screen-2xl w-[60%] text-left  font-mullish'>
+                                {el?.moreDetailsAfterVideo}
+                            </motion.p>
+                        }
+                        {el?.innerHeading1 &&
+                            <motion.p variants={childVariants} className=' md:w-[60%] mx-auto max-w-screen-2xl w-[60%] text-left  font-mullish font-bold mb-6'>
+                                {el?.innerHeading1}
+                            </motion.p>
+                        }
+
                     </motion.div>
                 ))}
             </div>

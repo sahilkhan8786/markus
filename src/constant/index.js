@@ -31,22 +31,40 @@ export const FirstPageDetais = [
         heading: 'Autoabgase',
         videoURL: 'iT-nVi4Pa4w',
         detailBeforeVideo: "Stell dir vor, du atmest tief ein, aber anstatt frischer Luft bekommst du etwas Schlechtes in deine Lunge. So ähnlich ist es für die Umwelt, wenn Autos schmutzige Abgase ausstoßen., Diese Abgase sind wie Rauch, der die Luft schmutzig macht.Darin sind giftige Stoffe, die unserer Umwelt und unserer Gesundheit schaden können.",
-        detailsAfterVideo: "Sie verschmutzen die Luft: Die giftigen Stoffe in den Abgasen können unsere Lunge und unsere Gesundheit schädigen.,Sie machen krank: Menschen, die in der Nähe von stark befahrenen Straßen wohnen, leiden öfter an Atemproblemen und anderen Krankheiten.,Sie schädigen die Pflanzen und Tiere: Die giftigen Stoffe in den Abgasen können Pflanzen und Tiere vergiften und sogar töten.,Sie verändern das Klima: Autoabgase tragen zum Klimawandel bei, der die Erde erwärmt und extreme Wetterereignisse wie Hitzewellen und Stürme verursacht."
+        innerHeading: 'Warum sind Autoabgase schädlich?',
+        detailsAfterVideo: "Sie verschmutzen die Luft: Die giftigen Stoffe in den Abgasen können unsere Lunge und unsere Gesundheit schädigen.,Sie machen krank: Menschen, die in der Nähe von stark befahrenen Straßen wohnen, leiden öfter an Atemproblemen und anderen Krankheiten.",
+        moreDetailsAfterVideo: 'Sie schädigen die Pflanzen und Tiere: Die giftigen Stoffe in den Abgasen können Pflanzen und Tiere vergiften und sogar töten.,Sie verändern das Klima: Autoabgase tragen zum Klimawandel bei, der die Erde erwärmt und extreme Wetterereignisse wie Hitzewellen und Stürme verursacht.'
 
     },
     {
         id: "html-marker-sky",
         heading: 'Luft zum Atmen',
         videoURL: '9Hbg-8k7t-U',
-        detailsAfterVideo: "Hast du schon mal versucht, die Luft zu fangen?,Puh, gar nicht so einfach, oder ?,                Luft ist unsichtbar, man kann sie nicht sehen, nicht anfassen und nicht schmecken.Aber sie ist überall um uns herum! So wie Wasser unsichtbar in einem Glas schwimmt, so schwimmt auch die Luft um uns herum.Wir können die Luft zwar nicht sehen, aber wir können sie spüren, wenn wir den Wind auf unserer Haut fühlen oder wenn wir tief einatmen.Die Luft ist wie ein unsichtbares Meer, das die ganze Erde umgibt.In diesem Meer gibt es verschiedene Gase, die wir zum Leben brauchen.Eines dieser Gase ist Sauerstoff.Sauerstoff ist wie die Nahrung für unsere Lunge.Wenn wir einatmen, nehmen wir Sauerstoff aus der Luft auf.Ein anderes Gas in der Luft ist Kohlendioxid.Kohlendioxid entsteht, wenn wir ausatmen, aber auch wenn Autos fahren oder Fabriken rauchen.Zu viel Kohlendioxid in der Luft kann unserer Umwelt schaden.Es kann die Erde erwärmen und das Klima verändern.,Deshalb ist es wichtig, dass wir die Luft sauber halten.,Was können wir dafür tun ?,                Weniger Auto fahren: Autos stoßen Kohlendioxid aus.,Mit dem Fahrrad oder zu Fuß gehen: Das ist gut für die Umwelt und für unsere Gesundheit./Öffentliche Verkehrsmittel nutzen: Busse und Bahnen sind umweltfreundlicher als Autos.,Pflanzen einpflanzen: Pflanzen nehmen Kohlendioxid aus der Luft auf. ,So können wir alle dazu beitragen, dass die Luft sauber bleibt und unsere Umwelt gesund bleibt."
+        detailBeforeVideo: 'Hast du schon mal versucht, die Luft zu fangen? Puh, gar nicht so einfach, oder?',
+        para1: 'Luft ist unsichtbar, man kann sie nicht sehen, nicht anfassen und nicht schmecken.Aber sie ist überall um uns herum! So wie Wasser unsichtbar in einem Glas schwimmt, so schwimmt auch die Luft um uns herum.',
+        para2: 'Wir können die Luft zwar nicht sehen, aber wir können sie spüren, wenn wir den Wind auf unserer Haut fühlen oder wenn wir tief einatmen. Die Luft ist wie ein unsichtbares Meer, das die ganze Erde umgibt. In diesem Meer gibt es verschiedene Gase, die wir zum Leben brauchen',
+        para3: 'Eines dieser Gase ist Sauerstoff. Sauerstoff ist wie die Nahrung für unsere Lunge. Wenn wir einatmen, nehmen wir Sauerstoff aus der Luft auf. Ein anderes Gas in der Luft ist Kohlendioxid. Kohlendioxid entsteht, wenn wir ausatmen, aber auch wenn Autos fahren oder Fabriken rauchen. ',
+        para4: 'Zu viel Kohlendioxid in der Luft kann unserer Umwelt schaden. Es kann die Erde erwärmen und das Klima verändern.',
+
+        innerHeading1: 'Warum sind Autoabgase schädlich?',
 
     },
     {
         id: "html-marker-galaxy",
-        heading: 'Warum können wir die Luft nicht sehen?',
+        heading: 'unsichtbare Luft',
         videoURL: 'twtOC3nyrIg',
-        detailBeforeVideo: "Das ist eine spannende Frage! Luft ist tatsächlich unsichtbar, obwohl sie überall um uns herum ist. Kannst du dir vorstellen, du hast ein Glas Wasser?,Das Wasser im Glas kannst du sehen, oder ? Aber wenn du Salz in das Wasser gibst und es umrührst, verschwindet das Salz nicht einfach.Es ist immer noch da, aber du kannst es nicht mehr sehen, weil es sich im Wasser aufgelöst hat.,Genauso ist es auch mit der Luft.,Die Luft besteht aus ganz vielen kleinen Teilchen.Diese Teilchen sind so klein, dass wir sie mit unseren Augen nicht sehen können.Sie sind viel kleiner als die winzigen Salzkristalle im Wasserglas.",
-        detailsAfterVideo: "Außerdem ist die Luft farblos und transparent.,Das bedeutet, dass sie kein Licht reflektiert und daher für unsere Augen unsichtbar ist.,Aber wir können die Luft trotzdem spüren,,            wenn wir den Wind auf unserer Haut fühlen oder wenn wir tief einatmen.,Luft ist also wie ein unsichtbarer Umhang, der die ganze Erde umgibt.,Sie ist wichtig für uns und alle anderen Lebewesen, denn sie enthält Sauerstoff, den wir zum Atmen brauchen."
+        title: 'Warum können wir die Luft nicht sehen?',
+        para1: "Das ist eine spannende Frage! Luft ist tatsächlich unsichtbar, obwohl sie überall um uns herum ist. Kannst du dir vorstellen, du hast ein Glas Wasser?",
+        para2: " Das Wasser im Glas kannst du sehen, oder? Aber  enn du Salz in das Wasser gibst und es umrührst, verschwindet das Salz nicht einfach.Es ist immer noch da, aber du kannst es nicht mehr sehen, weil es sich im Wasser aufgelöst hat.",
+        paraInnerHeading1: 'Genauso ist es auch mit der Luft.',
+        para3: "  Die Luft besteht aus ganz vielen kleinen Teilchen.Diese Teilchen sind so klein, dass wir sie mit unseren Augen nicht sehen können.Sie sind viel kleiner als die winzigen Salzkristalle im Wasserglas.",
+        paraInnerHeading2: 'Außerdem ist die Luft farblos und transparent.',
+        paraInnerHeading2Details: 'Das bedeutet, dass sie kein Licht reflektiert und daher für unsere Augen unsichtbar ist.',
+        paraInnerHeading3: 'Aber wir können die Luft trotzdem spüren,',
+        paraInnerHeading3Details: 'wenn wir den Wind auf unserer Haut fühlen oder wenn wir tief einatmen',
+        paraInnerHeading4: 'Luft ist also wie ein unsichtbarer Umhang, der die ganze Erde umgibt.',
+        paraInnerHeading4Details: 'Sie ist wichtig für uns und alle anderen Lebewesen, denn sie enthält Sauerstoff, den wir zum Atmen brauchen.',
+
 
     },
     {
@@ -56,6 +74,3 @@ export const FirstPageDetais = [
     }
 
 ]
-
-import tomVideo from '/Tom Waving550x500.mp4'
-import lolaVideo from '/Lola Waving.mp4'

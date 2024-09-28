@@ -37,6 +37,7 @@ const MagnifiedImageOverlay = ({ text, image, setMagnifiedImageOverlay, markerId
             /> */}
 
             {/* Clip path for magnifier effect */}
+
             <div
                 className='absolute '
                 style={{
@@ -65,31 +66,46 @@ const MagnifiedImageOverlay = ({ text, image, setMagnifiedImageOverlay, markerId
             </div>
 
             {/* Magnifier glass icon */}
-            <img
-                onClick={() => onReadMore()}
-
-                src={magnifierImage}
-                alt="Magnifier"
+            <div className='relative flex items-center justify-center   w-[700px] h-[700px]  '
                 style={{
                     top: `calc(50% + ${magnifierPos.y}px)`, // Center the magnifier icon
                     left: `calc(50% + ${magnifierPos.x}px)`, // Center the magnifier icon
                     transform: 'translate(-50%, -50%)',
-                }}
-                className='cursor-pointer z-50 w-[700px] absolute' // Adjust size as needed
-            />
-            <h1 className='z-50 bg-[#009ddb] absolute text-white text-xl p-3 rounded-lg' style={{
-                top: `calc(35% + ${magnifierPos.y}px)`, // Center the magnifier icon
-                left: `calc(56% + ${magnifierPos.x}px)`, // Center the magnifier icon
-                transform: 'translate(-50%, -50%)',
-            }}>Klicke um mehr zu
-                erfahren</h1>
-            <p className='z-50 bg-[#009ddb] absolute text-white text-xl p-3 rounded-lg' style={{
-                top: `5%`, // Center the magnifier icon
-                left: `50%`, // Center the magnifier icon
-                transform: 'translate(-50%, -50%)',
-            }}>{text}</p>
 
-        </div>
+                }}
+            >
+
+                <img
+                    onClick={() => onReadMore()}
+
+                    src={magnifierImage}
+                    alt="Magnifier"
+                    // style={{
+                    //     top: `calc(50% + ${magnifierPos.y}px)`, // Center the magnifier icon
+                    //     left: `calc(50% + ${magnifierPos.x}px)`, // Center the magnifier icon
+                    //     transform: 'translate(-50%, -50%)',
+                    // }}
+                    className='cursor-pointer z-50 object-cover absolute ' // Adjust size as needed
+                />
+                <h1 className='z-50  absolute text-black font-mullish text-xl p-3 rounded-lg top-[40%] left-[48%] '
+                //  style={{
+                //     top: `calc(46% + ${magnifierPos.y}px)`, // Center the magnifier icon
+                //     left: `calc(62% + ${magnifierPos.x}px)`, // Center the magnifier icon
+                //     fontFamily: 'Mullish'
+                // }}
+                >Klicke um mehr zu
+                    erfahren</h1>
+                <p className='z-40 text-[#009ddb] bg-[#f4f5fa] absolute  w-1/2 text-4xl p-3 rounded-lg top-10 left-0 '
+                //  style={{
+                //     top: `calc(20% + ${magnifierPos.y}px)`, // Center the magnifier icon
+                //     left: `calc(20% + ${magnifierPos.x}px)`, // Center the magnifier icon
+                //     transform: 'translate(-50%, -50%)',
+
+                // }}
+                >{text}</p>
+
+            </div>
+        </div >
     );
 };
 

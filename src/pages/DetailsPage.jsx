@@ -75,7 +75,7 @@ const DetailsPage = () => {
                             }
                         </div>
                         {el?.para4 &&
-                            <motion.p variants={childVariants} className=' md:w-[60%] mx-auto max-w-screen-2xl w-[full text-left  font-mullish  my-4'>
+                            <motion.p variants={childVariants} className=' md:w-[60%] mx-auto max-w-screen-2xl w-full text-left  font-mullish  my-4'>
                                 {el.para4}
                             </motion.p>
                         }
@@ -127,13 +127,13 @@ const DetailsPage = () => {
 
 
                         {el?.detailsAfterVideo &&
-                            <motion.p variants={childVariants} className=' md:w-[60%] mx-auto max-w-screen-2xl w-[60%] text-left  font-mullish'>
+                            <motion.p variants={childVariants} className=' md:w-[60%] mx-auto max-w-screen-2xl w-full text-left  font-mullish'>
                                 {el.detailsAfterVideo}
                             </motion.p>
                         }
 
                         {el?.moreDetailsAfterVideo &&
-                            <motion.p variants={childVariants} className=' md:w-[60%] mx-auto max-w-screen-2xl w-[60%] text-left  font-mullish'>
+                            <motion.p variants={childVariants} className=' md:w-[60%] mx-auto max-w-screen-2xl w-full text-left  font-mullish'>
                                 {el?.moreDetailsAfterVideo}
                             </motion.p>
                         }
